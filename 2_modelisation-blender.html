@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="section">
+      <p>
+        Ce chapitre vise à découvrir l'interface du logiciel Blender et à en
+        acquérir des bases de modélisation 3D ; donc nous ne traitons ici pas encore de l'add-on BlenderBIM ni des notions liées à l'IFC.
+      </p>
+      <p>Nous modéliserons pas à pas cette fenêtre de la Villa Le Sextant :</p>
+      <img src="./images/captures/2/photo.jpg" />
+      <h3>Interface</h3>
+      <h4>Fenêtres</h4>
+      <p>Le logiciel s’ouvre sur cette interface par défaut :</p>
+      <img src="./images/captures/2/interface.jpg" class="img-big" />
+      <p>
+        La <span style="color: red; font-weight: bold">barre info</span> donne
+        accès aux options de fichier et interfaces particuliers.
+      </p>
+      <p>
+        La
+        <span style="color: blue; font-weight: bold">fenêtre 3D</span> affiche
+        la scène, composée à l’ouverture d’une caméra, un cube et une lumière.
+      </p>
+      <p>
+        La
+        <span style="color: cyan; font-weight: bold">barre d'outils</span> offre
+        des raccourcis vers des outils de modélisation.
+      </p>
+      <p>
+        L'<span style="color: green; font-weight: bold">outliner</span> liste
+        les objets composant la scène.
+      </p>
+      <p>
+        Les <span style="color: orange; font-weight: bold">propriétés</span>
+        donne accès aux paramètres des éléments du projet.
+      </p>
+      <p>
+        La
+        <span style="color: violet; font-weight: bold">timeline</span> organise
+        l'animation temporelle de la scène.
+      </p>
+      <h4>Souris</h4>
+      <p>La manipulation de la scène 3D à la souris répond comme suit:</p>
+      <table>
+        <thead>
+          <th>Touche</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Clic gauche</td>
+            <td>Sélection</td>
+          </tr>
+          <tr>
+            <td>Clic droit</td>
+            <td>Menu contextuel</td>
+          </tr>
+          <tr>
+            <td>Molette</td>
+            <td>Zoom</td>
+          </tr>
+          <tr>
+            <td>Clic de la molette (maintenir appuyé)</td>
+            <td>Orbite 3D</td>
+          </tr>
+          <tr>
+            <td>Ctrl Clic de la molette (maintenir appuyé)</td>
+            <td>Déplacement latéral de la vue</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Points de vue</h4>
+      <p>Le menu View permet de régler la vue de la fenêtre 3D. </p>
+      <p>
+        -Basculer entre vue perspective et orthographique:
+      </p>
+      <img src="./images/captures/2/vue-1.jpg" />
+      <p>Les vues orthogonales sont disponibles dans View > Viewpoint:</p>
+      <img src="./images/captures/2/vue-2.jpg" />
+      <p>Le pavé numérique de votre clavier offre les raccourcis suivants :</p>
+      <table>
+        <thead>
+          <th>Touche</th>
+          <th>Vue depuis :</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>caméra active de la scène</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>dessus</td>
+          </tr>
+          <tr>
+            <td>Ctrl 7</td>
+            <td>dessous</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>face</td>
+          </tr>
+          <tr>
+            <td>Ctrl 1</td>
+            <td>derrière</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>droite</td>
+          </tr>
+          <tr>
+            <td>Ctrl 3</td>
+            <td>gauche</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>perspective / orthographique</td>
+          </tr>
+          <tr>
+            <td>.</td>
+            <td>zoom sur la sélection</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Axes</h4>
+      <p>
+        <span style="color: red">L'axe X est rouge</span>,
+        <span style="color: green">l'axe Y est vert</span>, et
+        <span style="color: blue">l'axe Z est bleu</span>.
+      </p>
+      <p>
+        L'axe Z n'est pas affiché par défaut, mais on peut l'activer dans les
+        paramètres d'affichage de la vue 3D :
+      </p>
+      <img src="./images/captures/2/axe-z.jpg" class="img-small" />
+      <p>
+        Les touches X, Y et Z peuvent être appelées pour contraindre une
+        opération (par exemple de translation) dans la direction correspondante.
+        Nous en verrons un exemple plus bas.
+      </p>
+
+      <h3>Modélisation</h3>
+      <p>
+        Nous modéliserons pas à pas la fenêtre suivante, pour découvrir les
+        outils essentiels de Blender :
+      </p>
+      <p>Résultat attendu :</p>
+      <p class="nb">
+        &#128221; La fenêtre ci-dessous est une interface 3D manipulable à la
+        souris. Nous y aurons recours à plusieurs reprises dans ce tutoriel, et
+        baliserons ainsi en
+        <span style="color: #fbee66; font-weight: bold">jaune</span> pour les
+        distinguer des images.
+      </p>
+      <div class="iframe-container">
+        <iframe src="./ifc/2-intro/index.html" frameborder="0"> </iframe>
+      </div>
+      <h4>N-Panel</h4>
+      <p>Nous allons commencer par modéliser la vitre.</p>
+      <p>
+        Le N-Panel est un panneau d'accès rapide à certaines propriétés
+        essentielles de la scène.
+      </p>
+      <p>
+        -Sélectionner le cube de base. L'élément sélectionné est alors entouré
+        de orange.
+      </p>
+      <p>
+        -Appeler le N-Panel par le raccourci clavier N ou en cliquant cette
+        flèche en-haut à droite de la Fenêtre 3D :
+      </p>
+      <img src="./images/captures/2/n-panel-1.jpg" />
+      <p>-Sous Item > Dimensions, donner les valeurs suivantes au cube :</p>
+      <img src="./images/captures/2/n-panel-2.jpg" class="img-small" />
+      <p>-Fermer le N-Panel en rappuyant sur N.</p>
+      <p>
+        -Renommer le Cube -> Vitre dans l'Outliner, en double-cliquant sur le
+        nom.
+      </p>
+      <img src="./images/captures/2/n-panel-3.jpg" class="img-small" />
+      <p>Résultat :</p>
+      <img src="./images/captures/2/n-panel-4.jpg" />
+      <h4>Ajouter / Dupliquer un élément</h4>
+      <p>Nous allons modéliser le cadre battant.</p>
+      <p>
+        -Ajouter une nouvelle géométrie à la scène en déroulant le menu Add en
+        haut de la Fenêtre 3D, ou par le Rac. Clav. MAJ+A.
+      </p>
+      <p class="tab-1">-Choisir Mesh > Cube (Raccourcis Clavier M puis C)</p>
+      <img src="./images/captures/2/ajouter-1.jpg" />
+      <p>-Renommer ce Cube > Battant.</p>
+      <p>-Lui donner les dimensions suivantes :</p>
+      <img src="./images/captures/2/ajouter-2.jpg" class="img-small" />
+      <p>Dupliquer la Vitre. Deux méthodes sont possibles :</p>
+      <p class="tab-1">-Copier-coller dans l'Outliner (Ctrl+C puis Ctrl+V)</p>
+      <p class="tab-1">
+        -Dans la Fenêtre 3D, Raccourci Clavier Maj+D pour lancer la commande de
+        duplication, puis Esc pour laisser le duplicatat au même emplacement.
+      </p>
+      <p>-Donner au duplicatat une dimension Y = 0.1 m</p>
+      <p>Résultat :</p>
+      <img src="./images/captures/2/ajouter-3.jpg" />
+      <h4>Modificateurs</h4>
+      <p class="nb">
+        &#128221; Les modificateurs sont des opérations automatiques qui
+        affectent la géométrie d'un objet de manière non destructive. Autrement
+        dit, l'opération se met à jour toute seule si l'on modifie la scène.
+        Pratique par exemple si l'on déplace une fenêtre : l'ouverture dans le
+        mur automatisera sa position.
+      </p>
+      <p>Nous allons soustraire le duplicat de la vitre au Battant.</p>
+      <p>
+        -Sélectionner le battant, puis dans le panneau des propriétés, sous
+        Modifiers, cliquer Add Modifier :
+      </p>
+      <img src="./images/captures/2/modifier-1.jpg" class="img-small" />
+      <p>-Choisir Boolean :</p>
+      <img src="./images/captures/2/modifier-2.jpg" />
+      <p>
+        -Choisir Difference, puis cliquer la pipette et sélectionner la copie de
+        la Vitre (dans la Fenêtre 3D ou dans l’Outliner) :
+      </p>
+      <img src="./images/captures/2/modifier-3.jpg" class="img-small" />
+      <p>Appliquer le modificateur en déroulant la flèche ci-dessous :</p>
+      <img src="./images/captures/2/modifier-4.jpg" class="img-small" />
+      <p class="nb">
+        &#128221; Ceci a pour effet d'appliquer cette opération de manière
+        définitive.
+      </p>
+      <p>
+        -Supprimer le duplicatat de la vitre par Clic droit > Delete, ou avec le
+        Raccourci Clavier X ou Delete.
+      </p>
+      <p>Résultat :</p>
+      <div class="iframe-container">
+        <iframe src="./ifc/2-modificateurs/index.html" frameborder="0">
+        </iframe>
+      </div>
+      <h4>Transformations : Move / Rotate / Scale</h4>
+      <p>
+        Les opérations de transformation d’objet sont accessibles par le menu
+        Object ou par les Raccourcis Clavier suivants :
+      </p>
+      <table>
+        <thead>
+          <th>Touche</th>
+          <th>Transformation :</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>G</td>
+            <td>Déplacement</td>
+          </tr>
+          <tr>
+            <td>S</td>
+            <td>Redimensionnement</td>
+          </tr>
+          <tr>
+            <td>R</td>
+            <td>Rotation</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Après avoir sélectionné l'objet, puis appelé une des ces commandes, on
+        peut :
+      </p>
+      <p class="tab-1">
+        -Contraindre la transformation sur l'axe X, Y ou Z en appuyant la touche
+        correspondante
+      </p>
+      <p class="tab-1">
+        -Donner une valeur numérique à la transformation en l'entrant sur le
+        clavier
+      </p>
+      <p>Puis il faut valider la transformation avec un clic.</p>
+      <p>-Déplacer le Battant en Y de -0.0049 m :</p>
+      <img src="./images/captures/2/transform-1.jpg" />
+      <p>Nous allons maintenant modéliser le cadre fixe de la fenêtre :</p>
+      <p>-Ajouter un nouveau Cube et lui donner les dimensions suivantes :</p>
+      <img src="./images/captures/2/transform-2.jpg" />
+      <p>-Procéder comme précédemment pour y créer un vide :</p>
+      <p class="tab-1">
+        -Dupliquer le cadre battant et conférer au duplicatat une dimension Y de
+        0,1 m :
+      </p>
+      <img src="./images/captures/2/transform-3.jpg" />
+      <p class="tab-1">
+        -Effectuer une soustraction booléenne du duplicatat sur le cadre fixe,
+        puis supprimer le duplicatat.
+      </p>
+      <h4>Isoler un objet dans la vue</h4>
+      <p>
+        Sélectionner le cadre fixe et l'isoler dans la vue avec le Raccourci
+        Clavier § ( en haut à gauche du clavier).
+      </p>
+      <img src="./images/captures/2/isoler.jpg" />
+      <p>
+        Nous voudrons désormais supprimer la partie centrale pointée par la
+        flèche bleue, épargnée par la soustraction booléenne.
+      </p>
+      <h4>Object Mode / Edit Mode</h4>
+      <p>Voilà un concept capital de Blender :</p>
+      <p class="tab-1">
+        -En mode Objet, vous vous occuperez de votre objet sélectionné comme un
+        tout, dans son ensemble.
+      </p>
+      <p class="tab-1">
+        -En mode Edition, vous aurez accès individuellement aux sommets, arêtes
+        et faces qui le composent.
+      </p>
+      <p>-Entrer en mode édition avec le Raccourci Clavier Tab</p>
+      <p>
+        Toutes les faces sont orangées ce qui indique qu’elles sont
+        sélectionnées :
+      </p>
+      <img src="./images/captures/2/edit-1.jpg" />
+      <p>
+        -Cliquer dans le vide ou Rac. Clav. Alt + A pour tout déselectionner.
+      </p>
+      <p>
+        -Observer en haut à gauche que le mode édition permet de travailler soit
+        sur les sommets, soit sur les arêtes, soit sur les faces de la géométrie
+        en édition : sélectionner l'icône Edge
+      </p>
+      <img src="./images/captures/2/edit-2.jpg" class="img-xs" />
+      <p class="nb">
+        &#128221; Les Raccourcis Clavier 1, 2 et 3 permettent de basculer d’un à
+        l’autre.
+      </p>
+      <p>
+        -Se placer en vue filaire pour pouvoir sélectionner ausi les arêtes
+        cachées :
+      </p>
+      <img src="./images/captures/2/edit-3.jpg" class="img-xs" />
+      <p>
+        -Se placer en vue de face avec le Rac. Clav. 1 et sélectionner les faces
+        au centre en traçant une fenêtre de gauche à droite :
+      </p>
+      <img src="./images/captures/2/edit-4.jpg" />
+      <p>
+        -Supprimer avec le Raccourci Clavier Delete puis en choisissant Vertices
+        dans le menu contextuel
+      </p>
+      <img src="./images/captures/2/edit-5.jpg" />
+      <p>
+        -Sortir du mode édition pour revenir vers le mode objet (RC Tab) et en
+        affichage solide
+      </p>
+      <img src="./images/captures/2/edit-6.jpg" class="img-xs" />
+      <p>Résultat :</p>
+      <img src="./images/captures/2/edit-7.jpg" />
+      <p>-Désisoler le cadre fixe du reste de la scène (RC §)</p>
+      <h4>Accrochages</h4>
+      <p>
+        Les accrochages (anglais: snapping) permettent à la souris de repérer
+        des points significatifs.
+      </p>
+      <p>-Dans la barre info, sélectionner l’icône en forme d’aimant :</p>
+      <img src="./images/captures/2/snapping-1.jpg" class="img-small" />
+      <p>-Dérouler le menu et choisir l’accrochage de type Vertex (Sommet) :</p>
+      <img src="./images/captures/2/snapping-2.jpg" />
+      <p>
+        -Rendre le cadre fixe coplanaire au cadre battant sur leur face nord
+        (Y+)
+      </p>
+      <p class="tab-1">
+        -Tourner la vue pour observer la scène depuis le cadran X-Y+ comme
+        ci-dessous
+      </p>
+      <p class="tab-1">
+        -Sélectionner le cadre fixe et entrer dans la commande de translation
+        (RC G)
+      </p>
+      <p class="tab-1">-Contraindre la translation sur l’axe Y (RC Y)</p>
+      <p class="tab-1">-Accrocher le sommet du cadre battant</p>
+      <img src="./images/captures/2/snapping-3.jpg" />
+      <h4>Fusionner des objets</h4>
+      <p>
+        -Fusionner les 3 objets en 1 en les sélectionnant puis en appelant la
+        commande Merge avec le RC Ctrl + J
+      </p>
+      <img src="./images/captures/2/join-1.jpg" />
+      <h4>Origine d'un objet</h4>
+      <p>
+        Blender affiche par un point orange l’origine des objets de la sélection
+        courante, ou s’il n’y en a pas, du dernier objet sélectionné. Exemple
+        ci-dessous avec un plan :
+      </p>
+      <img src="./images/captures/2/origin-1.jpg" />
+      <p>Cela affecte de manière notable les rotations, par exemple.</p>
+      <p class="nb">
+        NB : si vous ne voyez pas un tel point, s’assurer de ce réglage de la
+        vue :
+      </p>
+      <img src="./images/captures/2/origin-2.jpg" class="img-small" />
+      <p>
+        Comme nous le verrons plus tard, BlenderBIM créera un vide à l’inclusion
+        d’une fenêtre dans un mur. Ce vide prendra la taille de la fenêtre et se
+        positionnera en X+Y+ à partir de l’origine de la fenêtre. La position de
+        l'origine d'un objet par rapport à sa géométrie est donc fondamentale.
+      </p>
+      <p>-Activer les accrochages de type Vertex et l’outil Cursor :</p>
+      <img src="./images/captures/2/origin-3.jpg" class="img-xxs" />
+      <p>
+        -Déplacer le curseur sur le coin inférieur gauche de la fenêtre comme
+        ci-dessous :
+      </p>
+      <img src="./images/captures/2/origin-4.jpg" />
+      <p>-Réactiver l’outil de sélection et sélectionner la fenêtre.</p>
+      <p>
+        -Dans le menu Object -> Set Origin, cliquer Origin to 3D Cursor pour
+        déplacer l’origine de l’objet fenêtre vers le curseur.
+      </p>
+      <img src="./images/captures/2/origin-5.jpg" />
+      <p>
+        -Les propiétés d’emplacement d’un objet répondent également de ce point
+        origine. Dans le N-Panel, sous Location, remettre les XYZ à 0 m pour
+        déplacer toute la fenêtre dans le cadran XYZ+, faisant coïncider
+        l'origine de cet objet avec l'origine du projet :
+      </p>
+      <img src="./images/captures/2/origin-6.jpg" />
+      <h4>Appliquer les Transformations</h4>
+      <p>Lorsque l'on a terminé de telles modifications sur un objet, il est bon d'appliquer ces transformations.</p>
+      <p>-Dans le menu Object > Apply, choisir All Transforms. Ou passer par les RC Ctrl+A puis A.</p>
+      <img src="./images/captures/2/apply-1.jpg" class="img-small" />
+      Ceci a par exemple pour effet de redonner à l'objet une échelle de 1 :
+      <img src="./images/captures/2/apply-2.jpg" class="img-xs"/>
+      <p>
+        Bravo! La modélisation pas à pas de cette fenêtre est terminée, et nous
+        avons vu les outils essentiels pour s'initier à la modélisation
+        architecturale sur Blender.
+      </p>
+    </section>
+    <script type="module" src="./bundle.js"></script>
+  </body>
+</html>

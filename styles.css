@@ -1,0 +1,244 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+:root{
+    --margin-left: 48px;
+    --nav-width: 20%;
+}
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+header{
+    margin-bottom: 20px;
+}
+h1{
+    margin-left: var(--margin-left);
+    margin-right: var(--margin-left);
+    border-bottom: 1px solid;
+    border-color: #cccccc
+}
+h2{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 30px;
+    border-bottom: 1px solid;
+    border-color: #cccccc;
+}
+h3{
+    font-size: 30px;
+    margin-top: 50px;
+    color: #F63D0C;
+    border-bottom: 1px solid;
+    border-color: #cccccc;
+}
+h4{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 20px;
+    color: #D4520B;
+    border-bottom: 1px solid;
+    border-color: #dddddd;
+}
+h5{
+    color: #EB7700
+}
+h6{
+    color: #D4890B;
+}
+.h7{
+    color: #F6B60C;
+}
+.autre{
+    color:#215688;
+}
+nav{
+    position: fixed;
+    padding: 20px 5px;
+    width: var(--nav-width);
+    height: 70vh;
+    overflow-y: scroll;
+    background-color: #eeeeee;
+}
+section{
+    padding-right: var(--margin-left);
+    padding-left: var(--margin-left);
+    padding-bottom: 50px;
+}
+table{
+    margin: 10px 0;
+    border: 1px solid;
+    border-color: #cccccc;
+}
+th, td{
+    border: 1px solid;
+    padding: 0 4px;
+    border-color: #cccccc;
+}
+a{
+    color: #4F8FCC;
+    text-decoration: none;
+    transition-property: text-decoration;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+a:hover{
+    text-decoration: underline;
+}
+iframe {
+    width: 70%;
+    height: 50vh;
+    overflow: hidden; 
+    display: block;
+    margin: 10px auto;
+    /*border: 2px solid;
+    border-color: #EB7700;*/
+}
+img{
+    width: 50%;
+    margin: 10px var(--margin-left);
+    display: block;
+}
+.iframe-container{
+    background-color: #FBEE66;
+}
+.img-big{
+    width: 70%;
+}
+.img-small{
+    width: 30%;
+}
+.img-xs{
+    width: 20%;
+}
+.img-xxs{
+    width: 10%;
+}
+.bold{
+    font-weight: bold;
+}
+.it{
+    font-style: italic;
+}
+.header-logo-unite{
+    height: 50px;
+    width: auto;
+    margin-left: var(--margin-left);
+    margin-right: 0;
+    margin-top: 8px;
+}
+.nav-close{
+    width: var(--margin-left);
+    background-color: white;
+    overflow-y: auto;
+}
+.nav-button{
+    position: fixed;
+    margin-top: -2.5px;
+    padding: 5px 5px;
+    border: unset;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+}
+.nav-open-button{
+    color: white;
+    background-color: #0E538A;
+}
+.nav-button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: red;
+}
+.nav-list-title{
+    margin-left: var(--margin-left);
+}
+.nav-list-item{
+    margin-top: 8px;
+}
+.nav-list-item-anchor{
+    color: #4F8FCC;
+    font-weight: normal;
+    text-decoration: none;
+    margin-top: 5px;
+}
+.current-nav-list-item{
+    font-weight: bold;
+    background-color: #dddddd;
+}
+.sub-list-button{
+    margin: 0 5px;
+    padding: 0 2px;
+    border: unset;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+}
+.sub-list-open-button{
+    background-color: rgba(0, 0, 0, 0);
+}
+.sub-list-button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: red;
+}
+.sub-item-h3{
+    margin-left: 15px;
+}
+.sub-item-h4{
+    margin-left: 30px;
+}
+.section-nav-open{
+    margin-left: var(--nav-width);
+}
+.section-nav-close{
+    margin-left: 0px;   
+}
+.blender{
+    color: #dddddd;
+    background-color: #444444;
+    padding: 1px 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+.warning{
+    display: inline-block;
+    padding: 5px;
+    border: solid yellow 3px;
+    background-color: rgb(241, 241, 200);
+}
+.nb{
+    display: inline-block;
+    padding: 5px;
+    color: white;
+    background-color: #4F8FCC;
+    border-radius: 5px;
+}
+.tab-1{
+    margin-left: 20px;
+}
+/*For each page*/
+.un-logo{
+    width: 20vw;
+    padding: 1vw;
+}
+#header-logos-container{
+    display: flex;
+    margin-left: var(--margin-left);
+    align-items: center;
+    height: 5.5rem;
+}
+#header-logo-epfl{
+    height: 27px;
+    width: auto;
+    margin: 0;
+}
+#nav-list{
+    display: flex;
+    flex-direction: column;
+    margin-left: var(--margin-left);
+}
+#table-download td:hover{
+    border-color: red;
+}

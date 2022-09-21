@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="section">
+      <p>
+        Bienvenue dans ce tutoriel de BlenderBIM, un outil open source de
+        modélisation BIM.
+      </p>
+      <div class="warning">
+        <p>
+          &#9888;&#65039; Blender est un logiciel bien établi, mais l'add-on BlenderBIM n'est actuellement disponible
+          qu'en version alpha, c'est-à-dire en phase de tests.
+        </p>
+        <p>
+          Ce site est également en développement et sujet à des mises à jour
+          régulières.
+        </p>
+      </div>
+
+      <h3>Définitions</h3>
+
+      <h4>Laboratoire CNPA de l'EPFL</h4>
+      <p>
+        Ce tutoriel participe des enseignements du
+        <span class="bold"
+          >Laboratoire des Cultures Numériques du Projet Architectural</span
+        >
+        (CNPA) à l'EPFL.
+      </p>
+      <p>
+        Le CNPA propose à ses étudiants des tutoriels de modélisation BIM sur
+        différents logiciels; tous ont pour objet la
+        <span class="bold">Villa Le Sextant</span>, un projet conçu en 1935 par
+        Le Corbusier.
+      </p>
+      <p>
+        Site du
+        <a href="https://www.epfl.ch/labs/cnpa/fr/" target="_blank"
+          >CNPA &#8599;</a
+        >
+      </p>
+
+      <h4>BIM</h4>
+      <p>
+        BIM est l'acronyme anglais de
+        <span class="it">Building Information Modeling</span>, qu'on peut
+        traduire en français par
+        <span class="bold">Modélisation Informée du Bâti</span>.
+      </p>
+      <p>
+        Cette méthode de projet s'organise autour d'une maquette numérique 3D,
+        comportant géométries et métadonnées (planification, coûts, dessins 2D,
+        etc).
+      </p>
+
+      <h4>Interopérabilité & Open Source</h4>
+      <p>
+        Au travers de ses enseignements et recherches, le CNPA s'engage pour un
+        BIM interopérable et ouvert. Cela passe par des standards comme l'IFC ou
+        des outils open source.
+      </p>
+      <p>
+        Pour en savoir plus sur l'OPEN BIM, visiter
+        <a href="https://osarch.org/" target="_blank">osarch.org</a>
+      </p>
+
+      <h4>IFC (buildingSMART)</h4>
+      <p>
+        L'<a
+          href="https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/"
+          target="_blank"
+          >IFC</a
+        >
+        est l'acronyme d'<span class="it">Industry Foundation Classes</span>.
+        C'est une norme internationale ISO développée par buildingSMART, qui
+        décrit numériquement l'industrie du bâtiment. Standard de données et
+        format de fichier pour les projets BIM, l'IFC est ouvert, interopérable
+        et durable. La majorité des logiciels BIM offrent un export vers le
+        format IFC.
+      </p>
+      <img src="./images/1-logos/buildingSMART.jpg" class="un-logo" />
+
+      <h4>Blender</h4>
+      <p>
+        <a href="https://www.blender.org/" target="_blank">Blender</a> est un
+        logiciel libre de modélisation, d'animation et de rendu 3D.
+      </p>
+
+      <h4>BlenderBIM</h4>
+      <p>
+        ... et
+        <a href="https://blenderbim.org/" target="_blank">BlenderBIM</a> est la
+        brillante rencontre de Blender avec l'IFC! C'est un projet open source
+        qui profite des capacités de modélisation de Blender et permet d'y
+        organiser son modèle nativement en IFC.
+      </p>
+
+      <h3>Installations</h3>
+      <p>
+        Blender est un logiciel, à installer d'abord. BlenderBIM est un add-on
+        de Blender, à installer ensuite une fois Blender ouvert. Les deux sont
+        libres d'accès.
+      </p>
+      <table id="table-download">
+        <thead>
+          <th>Blender (logiciel)</th>
+          <th>BlenderBIM (add-on)</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a
+                href="https://www.blender.org/download/"
+                title="blender.org/download"
+                target="_blank"
+                ><img src="./images/1-logos/blender.jpg" class="un-logo"
+              /></a>
+            </td>
+            <td>
+              <a
+                href="https://blenderbim.org/download.html"
+                title="blenderbim.org/download"
+                target="_blank"
+                ><img src="./images/1-logos/blenderbim.jpg" class="un-logo"
+              /></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4>Installer le logiciel Blender</h4>
+      <p>
+        Suivre les recommandations officielles pour installer Blender sur votre
+        machine.
+      </p>
+      <p class="nb">
+        &#128221; Par soucis de cohérence avec le standard IFC et l'add-on BlenderBIM,
+        tous deux en anglais, nous installerons Blender et nommerons les
+        commandes dans ce tutoriel également en anglais.
+      </p>
+      <h4>Installer l'add-on BlenderBIM</h4>
+      <p>
+        Pour BlenderBIM, procéder comme pour tout autre add-on sur Blender. Une
+        fois téléchargé, il ne faut pas extraire le dossier compressé.
+      </p>
+      <p>
+        Démarrer Blender, accéder au menu
+        <span class="blender">Edit > Preferences... > Add-ons</span>. Cliquer
+        sur <span class="blender">Install...</span>, sélectionner l'add-on dans
+        l'explorateur, puis cliquer <span class="blender">Install Add-on</span>.
+        Enfin, dans la liste déroulante, cocher la case devant
+        <span class="blender">Import-Export: BlenderBIM</span> pour activer cet
+        add-on.
+      </p>
+    </section>
+    <script type="module" src="./bundle.js"></script>
+  </body>
+</html>

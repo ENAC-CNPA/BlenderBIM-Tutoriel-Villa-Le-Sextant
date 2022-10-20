@@ -1,19 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <section id="section">
-        <div class="warning">
-            <p>
-                &#9888;&#65039; Page en développement.
-            </p>
+      <div class="warning">
+        <p>&#9888;&#65039; Page en développement.</p>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>Pourquoi modéliser en IFC natif</h3>
+        <div class="h3-chapter-content">
+          <h4>
+            Créer directement une donnée interopérable, accessible à tous et
+            durable
+          </h4>
+          <p>
+            Traditionnellement, l'IFC est considéré comme un format d'export non
+            éditable, servant à partager une maquette numérique modélisée dans
+            un format propre à votre logiciel. Cela implique des limites et
+            erreurs de conversion propres à chaque logiciel, ce qui bride son
+            interopérabilité.
+          </p>
+          <p>
+            Pour y parer, BlenderBIM propose de modéliser et informer son projet
+            directement et exclusivement selon le schéma de standardisation de
+            la donnée de buildingSMART, soit en IFC natif. A tel point que ce
+            qu'il est possible de faire sur Blender mais n'existe pas en IFC
+            n'est pas pris en considération par BlenderBIM.
+          </p>
+          <p>
+            Pour en savoir plus sur le concept d'IFC natif, consulter cet
+            article par Bruno Postle et Dion Moult :
+            <a
+              href="https://github.com/brunopostle/ifcmerge/blob/3e1c11884bf1599f4d8564a93cd6209cdceae931/docs/whitepaper.rst"
+              target="_blank"
+            >
+              Native IFC
+            </a>
+          </p>
+          <p>
+            Modéliser en IFC natif assurera à votre maquette numérique d'être
+            construite sur une donnée interopérable, accessible à tous, et
+            durable.
+          </p>
+          <h4>Blender est une fenêtre sur votre IFC</h4>
+          <p>
+            Ainsi Blender n'est finalement qu'une fenêtre sur votre IFC. Votre
+            fichier .blend importera bien peu, vous pourrez réimporter à tout
+            moment votre .ifc dans un fichier blender vierge.
+          </p>
+          <p>
+            Pour vérifier l'avancée de votre travail, vous pouvez importer votre
+            IFC dans une visionneuse BIM. Il en existe des gratuites comme
+            <a href="https://bimvision.eu/download/" target="_blank"
+              >BIMvision</a
+            >, et bientôt une page sur ce site vous permettra d'importer votre
+            IFC directement sur navigateur.
+          </p>
+          <h4>IFC4</h4>
+          <p>
+            Le schéma IFC évolue, mais les versions sont rétrocompatibles ce qui
+            sécurise la durabilité de votre donnée. Vous pourrez réouvrir votre
+            maquette numérique dans 20 ans, et ce sans dépendance à aucun
+            logiciel. Nous travaillerons en format IFC4, comme conseillé par la
+            communauté BlenderBIM.
+          </p>
+          <h4>Représentations géométriques : Solids, Tessellations, etc.</h4>
+          <p>
+            Modéliser nativement en IFC implique de s'en tenir aux définitions
+            standardisées et d'être bien conscient de la nature géométrique des
+            éléments que l'on ajoute à sa maquette, car cela peut avoir une
+            influence sur la donnée. On va rencontrer principalement deux types
+            de représentation géométrique qu'accepte l'IFC :
+          </p>
+          <p>
+            -Solid : résultat d'opérations paramétriques ou booléennes; par
+            exemple un mur avec une valeur d'extrusion pour son épaisseur, et
+            son sommet coupé par un pan de toiture. => Forme limitée mais
+            paramétrique.
+          </p>
+          <p>
+            -Tessellation : c'est une sorte de mesh, la surface de l'objet est
+            définie par une somme de triangles. Blender est le logiciel idéal
+            pour ce type de modélisation => Toute forme envisageable, mais non
+            paramétrique.
+          </p>
+          <p>
+            D'autres représentations géométriques sont envisageables, mais moins
+            courantes (nuage de point par exemple).
+          </p>
+          <p>
+            Aussi, un élément IFC peut avoir, en plus ou à la place, une
+            représentation 2D (e.g. mobilier), ou ne pas avoir du tout de
+            représentation géométrique (e.g. une phase de construction).
+          </p>
         </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>Démarrage du Projet</h3>
+        <div class="h3-chapter-content">
+          <p>
+            Démarrer Blender et supprimer le cube, la lumière et la caméra de
+            base.
+          </p>
+          <h4>Créer un fichier IFC à l'intérieur de Blender</h4>
+          <p>
+            -Dans l’onglet Scene des propriétés, dérouler le menu IFC Project et
+            cliquer Create Project avec les paramètres suivants :
+          </p>
+          <img src="./images/captures/5/creer-ifc-1.jpg" />
+          <p>Résultat dans l'Outliner:</p>
+          <img src="./images/captures/5/creer-ifc-2.jpg" />
+          <p>
+            Vous avez créé l’arborescence qui organisera votre modèle selon le
+            schéma IFC4.
+          </p>
+          <h4>Sauvegarder le fichier .blend = Exporter le fichier .ifc</h4>
+          <p>
+            -Enregistrer le document Blender (RC Ctrl + S), en définissant son
+            emplacement et son nom.
+          </p>
+          <p>
+            -Le logiciel vous propose ensuite d’exporter un fichier IFC. Définir
+            un emplacement, un nom et cliquer Export IFC.
+          </p>
+          <img src="./images/captures/5/creer-ifc-3.jpg" />
+          <p>
+            Sous les paramètres de scène > IFC Project Info > IFC Project, vous
+            trouverez le bouton dédié Save Project pour sauvegarder ce fichier
+            IFC au long de la modélisation.
+          </p>
+          <p>
+            Nous sommes bien en présence de deux fichiers, le .ifc étant lié
+            dans le .blend. Au besoin, par exemple en cas de bug ou pour vous
+            assurer de l'état de l'IFC, vous pouvez réimporter votre fichier IFC
+            dans un nouveau fichier Blender vierge à l'aide du même menu
+            (bouton: Load Project).
+          </p>
+          <h4>Nommer le projet</h4>
+          <p>-Sélectionner l’objet IfcProject dans l’Outliner.</p>
+          <img src="./images/captures/5/nommer-ifc-1.jpg" class="img-xs" />
+          <p>
+            -Accéder à ses attributs et changer son nom en "Villa Le Sextant" :
+          </p>
+          <img src="./images/captures/5/nommer-ifc-2.jpg" class="img-small" />
+          <p>
+            Ceci a pour effet de changer également automatiquement le nom de la
+            Collection :
+          </p>
+          <img src="./images/captures/5/nommer-ifc-3.jpg" class="img-small" />
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>Ifc Georeferencing</h3>
+        <div class="h3-chapter-content">
+          <p>
+            -Dans les propriétés de la Scene, dérouler les menus IFC Geometry >
+            IFC Georeferencing et cliquer sur le + pour ajouter un
+            géoréférencement :
+          </p>
+          <img src="./images/captures/5/georef-1.jpg" />
+          <p>-Cliquer le crayon pour entrer en mode édition des données :</p>
+          <img src="./images/captures/5/georef-2.jpg" class="img-small" />
+          <h4>Informer le SCR :</h4>
+          <p>
+            -Sous Projected CRS, renseigner dans le champ Name le code EPSG du
+            SCR (=Système de Coordonnées de Référence) Lambert 93 - CC46 de la
+            Zone 5 du système métrique français = EPSG:3946
+          </p>
+          <p>
+            Pour en savoir plus, consulter cette
+            <a
+              href="https://formationsig.gitlab.io/fiches-techniques/priseenmain/04_projection_SCR.html"
+              target="_blank"
+              >page de formation à QGIS par l'Inrap</a
+            >.
+          </p>
+          <img src="./images/captures/5/georef-3.jpg" class="img-small" />
+          <p class="nb">
+            &#128221; Conformément aux recommandations de
+            <a
+              href="https://standards.buildingsmart.org/IFC/DEV/IFC4_3/RC1/HTML/schema/ifcrepresentationresource/lexical/ifccoordinatereferencesystem.htm"
+              target="_blank"
+              style="color: cyan"
+              >buildingSMART</a
+            >
+            le champ Name devrait être tiré de la liste reconnue par l'European
+            Petroleum Survey Group (EPSG) ; si les indications y sont
+            suffisamment claires, le reste des champs n’est pas nécessaire.
+          </p>
+          <h4>Informer les coordonnées de géoréférencement</h4>
+          <p>
+            -Sous Map Conversion, renseigner dans les champs Eastings et
+            Northings respectivement les valeurs de longitude = 375016.2 et
+            latitude = 6518395.4 du Point de référence Planimétriques = PrefP
+          </p>
+          <p>Ce point git à l'origine 0, 0 du modèle IFC.</p>
+          <img src="./images/captures/5/georef-4.jpg" class="img-small" />
+          <p>
+            -Renseigner ensuite sous OrthogonalHeight l'altitude 12.3 du Point
+            de référence d'Altitude = PrefK, altitude au dessus de la mer du
+            rez-de-chaussée fini de votre projet.
+          </p>
+          <p>
+            Ce point git quelque part sur le plan XY du modèle IFC, soit avec
+            une valeur Z=0.
+          </p>
+          <img src="./images/captures/5/georef-5.jpg" class="img-xs" />
+          <p class="nb">
+            &#128221; Ces points vous seront donnés avec précision sur un projet
+            professionnel par un géomètre. Voir l’approfondissement de la
+            Convergence GIS-BIM pour apprendre à obtenir sur QGIS des points qui
+            peuvent suffire à des usage de conception, par exemple des études
+            d'ensoleillement.
+          </p>
+          <br /><br />
+          <p class="nb">
+            &#128221; Nous avons à faire à deux points distincts, puisque
+            généralement le PrefP est externe au projet, matérialisé par une
+            borne. Alors que le PrefK est interne au projet, indiquant le sol
+            fini du rez-de-chaussée.
+          </p>
+          <p>
+            Ces points peuvent, mais ne doivent pas indispensablement, être
+            modélisés dans l'IFC sous forme de deux pyramides inversées. Ces
+            métadonnées suffisent.
+          </p>
+          <h4>Informer l’orientation par rapport au nord géographique</h4>
+          <p>
+            Sous True North, cliquer Has True North et compléter avec les
+            valeurs 0.954 et 0.301 comme suit :
+          </p>
+          <img src="./images/captures/5/georef-6.jpg" class="img-small" />
+          <p>
+            -Sortir de l’édition en validant les changements avec la coche :
+          </p>
+          <img src="./images/captures/5/georef-7.jpg" class="img-small" />
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcGrid & IfcBuildingStorey</h3>
+        <div class="h3-chapter-content">
+          <h4>IfcGrid</h4>
+          <p>-Ajouter une IFCGrid :</p>
+          <img src="./images/captures/5/grid-1.jpg" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/grid-2.jpg" class="img-small" />
+          <p>
+            -En mode Edition, déplacer un à un les IfcGridAxis selon les cotes
+            suivantes, et avec deux mètres de marge à chaque extrémité :
+          </p>
+          <table>
+            <tbody>
+              <tr>
+                <td>X à A</td>
+                <td>3.6 m</td>
+              </tr>
+              <tr>
+                <td>A à B</td>
+                <td>4.36 m</td>
+              </tr>
+              <tr>
+                <td>B à C</td>
+                <td>1.74 m</td>
+              </tr>
+              <tr>
+                <td>Y à 01</td>
+                <td>5.1 m</td>
+              </tr>
+              <tr>
+                <td>01 à 02</td>
+                <td>13.3 m</td>
+              </tr>
+              <tr>
+                <td>02 à 03</td>
+                <td>5.88 m</td>
+              </tr>
+            </tbody>
+          </table>
+          <img src="./images/captures/5/grid-4.jpg" class="img-big" />
+          <p class="nb">
+            &#128221; L'image ci-dessus est issue d'une mise en page, que nous
+            verrons à un prochain chapitre. Le résultat visuel que vous devez
+            obtenir ici est celui de la capture suivante.
+          </p>
+          <p>
+            Effectuer ces déplacements en mode Edition a conservé l'origine de
+            tous ces objets à 0,0 :
+          </p>
+          <img src="./images/captures/5/grid-3.jpg" />
+          <h4>IfcBuildingStorey</h4>
+          <p>
+            La donnée d'une maquette IFC est structurée en étages, traduits dans
+            l'arborescence Blender par des Collections dans lesquelles nous
+            rangerons tous les éléments construits. Nous allons créer les étages
+            suivants :
+          </p>
+          <table>
+            <thead>
+              <th>IfcBuildingStorey.Name</th>
+              <th>IfcBuildingStorey.LongName</th>
+              <th>Hauteur</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>S1</td>
+                <td>Sous-sol</td>
+                <td>-2.23 m</td>
+              </tr>
+              <tr>
+                <td>00</td>
+                <td>Rez-de-chaussée</td>
+                <td>0.00 m</td>
+              </tr>
+              <tr>
+                <td>01</td>
+                <td>Etage</td>
+                <td>2.38 m</td>
+              </tr>
+              <tr>
+                <td>TT</td>
+                <td>Toiture</td>
+                <td>4.80 m</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            -Renommer l'objet du seul étage existant pour l'instant :
+            IfcBuildingStorey/00. Cela modifie automatiquement le nom de la
+            Collection :
+          </p>
+          <img src="./images/captures/5/storey-1.jpg" class="img-small" />
+          <p>Pour ajouter un étage :</p>
+          <p>
+            -Dans la collection IfcBuilding/My Building, ajouter à l'origine un
+            objet Blender Empty > Plain Axes :
+          </p>
+          <img src="./images/captures/5/storey-2.jpg" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/storey-3.jpg" class="img-small" />
+          <p>
+            Dans les propriétés de cet objet, le déclarer comme
+            IfcBuildingStorey :
+          </p>
+          <img src="./images/captures/5/storey-4.jpg" />
+          <p>Renommer et déplacer selon le tableau plus haut.</p>
+          <p>Résultat :</p>
+          <img src="./images/captures/5/storey-5.jpg" />
+          <img src="./images/captures/5/storey-6.jpg" class="img-small" />
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcWall</h3>
+        <div class="h3-chapter-content">
+          <p>
+            Rappelons qu'une maquette IFC est structurée en étages. Ainsi un mur
+            qui apparaît continu sur plusieurs étages, sera modélisé en
+            plusieurs éléments indépendants, un par étage.
+          </p>
+          <h4>Créer un IfcWallType</h4>
+          <p>
+            Un type d'objet définit des propriétés communes qui s'appliquent à
+            toutes ses occurrences.
+          </p>
+          <p>
+            -Ajouter à la scène un élément Empty > Plain Axes, puis le déclarer
+            comme IfcWallType :
+          </p>
+          <img src="./images/captures/5/walltype-1.jpg" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/walltype-2.jpg" />
+          <p>-Renommer : Pierre 450mm</p>
+          <img src="./images/captures/5/walltype-3.jpg" />
+          <p>Créer un IfcMaterial à affecter à ce IfcWallType :</p>
+          <p>-Ajouter à la scène un plan</p>
+          <img src="./images/captures/5/walltype-4.jpg" />
+          <p>-Avec le plan sélectionné, accéder aux propriétés de matériau :</p>
+          <img src="./images/captures/5/walltype-5.jpg" class="img-xxs" />
+          <p>-Ajouter un nouveau matériau :</p>
+          <img src="./images/captures/5/walltype-6.jpg" />
+          <p>-Renommer : Pierre</p>
+          <img src="./images/captures/5/walltype-7.jpg" />
+          <p>
+            Pour l’instant, nous avons créé un matériau simplement dans Blender.
+            Pour en faire une donnée IFC : descendre dans l’arborescence et
+            cliquer Create Ifc Material.
+          </p>
+          <img src="./images/captures/5/walltype-8.jpg" />
+          <p>-Supprimer le plan.</p>
+          <p>Définir les couches du IfcWallType</p>
+          <p>-Sélectionner le IfcWallType :</p>
+          <img src="./images/captures/5/walltype-9.jpg" class="img-small" />
+          <p>
+            -Sous les propriétés de l’objet > Ifc Object Metada > Ifc Object
+            Material : Dérouler Material Type et choisir IfcMaterialLayerSet :
+          </p>
+          <img src="./images/captures/5/walltype-10.jpg" />
+          <p>
+            Cette manipulation permet de déclarer que ce type de mur est défini
+            par un ensemble de couches horizontales.
+          </p>
+          <p>-Ajouter un ensemble de couches en cliquant le + :</p>
+          <img src="./images/captures/5/walltype-11.jpg" />
+          <p>-Editer en cliquant le crayon :</p>
+          <img src="./images/captures/5/walltype-12.jpg" />
+          <p>
+            -Renommer l’ensemble de couches Pierre et ajouter l’Ifc Material
+            “Pierre” de la liste déroulante avec le + :
+          </p>
+          <img src="./images/captures/5/walltype-13.jpg" />
+          <p>-Accéder aux propriétés de la couche en cliquant le crayon :</p>
+          <img src="./images/captures/5/walltype-14.jpg" />
+          <p>
+            -Entrer une épaisseur de 0.45m dans le champ LayerThickness puis
+            valider avec le vu:
+          </p>
+          <img src="./images/captures/5/walltype-15.jpg" />
+          <p>
+            -Valider également les modifications sur l’ensemble de couches :
+          </p>
+          <img src="./images/captures/5/walltype-16.jpg" />
+          <p>Vérifier dans le N-Panel :</p>
+          <img src="./images/captures/5/walltype-17.jpg" />
+          <h4>BIM Tool - Dessiner un IfcWall</h4>
+          <p>
+            -Sélectionner dans l'Outliner la collection de l'étage 00, ce qui
+            aura pour effet d'y ranger le mur que nous allons créer.
+          </p>
+          <p>-Déplacer le Cursor au début de l'Axe A :</p>
+          <img src="./images/captures/5/wall-1.jpg" />
+          <p class="nb tab-1">
+            &#128221; Plutôt que d'activer l'outil, on peut déplacer le Cursor
+            juste avec MAJ + Clic droit.
+          </p>
+          <p>-Activer le BIM Tool :</p>
+          <img src="./images/captures/5/wall-2.jpg" />
+          <p>
+            Le seul type d'objet créé pour l'instant est sélectionné d'office :
+          </p>
+          <img src="./images/captures/5/wall-3.jpg" />
+          <p>-Taper Maj+A pour ajouter une occurrence de ce type. Résultat :</p>
+          <img src="./images/captures/5/wall-4.jpg" />
+          <img src="./images/captures/5/wall-5.jpg" class="img-small" />
+          <h5>Mise en garde</h5>
+          <p class="nb tab-1">
+            &#128221; Garder à l'esprit que vous travaillez de la donnée IFC :
+            la géométrie affichée par la scène 3D n'est qu'une lecture par
+            Blender de votre fichier IFC. Ce mur est un solide répondant à des
+            paramètres IFC. Pour y apporter des modifications, utiliser le BIM
+            Tool proposé par BlenderBIM permettra de modifier cette géométrie en
+            même temps que les paramètres sous-jacents, et donc de bien modifier
+            ce mur à l'intérieur de l'IFC. Nous verrons plus tard comment donner
+            à un élément une représentation géométrique qui est une
+            tessellation, c'est-à-dire un mesh capable d'encaisser des
+            modifications de type modélisation Blender.
+          </p>
+          <p>Contre-exemple :</p>
+          <p>Si vous modifiez la hauteur de ce mur par exemple :</p>
+          <p class="tab-1">
+            -en changeant la valeur Z dans les Dimensions du N-Panel
+          </p>
+          <p class="tab-1">
+            -ou en déplaçant sa face supérieure en Edit Mode comme ci-dessous :
+          </p>
+          <img src="./images/captures/5/wall-6.jpg" />
+          <p>
+            Cette modification ne sera pas enregistrée dans l'IFC. Ainsi si vous
+            réimportez ce fichier IFC dans un Blender vierge ou dans une
+            visionneuse IFC quelconque, cette modification n'aura pas été
+            enregistrée.
+          </p>
+          <h5>Hauteur du mur</h5>
+          <p>
+            Pour changer la hauteur du mur, le sélectionner et entrer la valeur
+            numériquement dans le champ Height du BIM Tool, puis cliquer le
+            symbole de mise à jour pour valider.
+          </p>
+          <p class="tab-1">-Soit dans la barre supérieure :</p>
+          <img src="./images/captures/5/wall-7.jpg" />
+          <p class="tab-1">-Soit dans le N-Panel sous Tool :</p>
+          <img src="./images/captures/5/wall-8.jpg" class="img-small" />
+          <h5>Jonctions entre les murs</h5>
+          <p>
+            Le BIM Tool offre des outils pour vous aider à gérer les jonctions
+            entre les murs :
+          </p>
+          <p>-Déplacer le premier mur au long de l'axe A comme suit :</p>
+          <p>
+            -Puis ajouter un nouveau mur sur l'axe 01 et tourner le de 90° comme
+            suit :
+          </p>
+          <img src="./images/captures/5/wall-9.jpg" class="img-small" />
+          <p>
+            -Sélectionner les deux murs, puis cliquer la commande Mitre du BIM
+            Tool (Raccourci Maj + Y) :
+          </p>
+          <img src="./images/captures/5/wall-10.jpg" class="img-xxs" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/wall-11.jpg" />
+          <h5>Prolonger un mur</h5>
+          <p>
+            BlenderBIM propose également un outil pour prolonger un mur jusqu'au
+            Cursor. Nous allons nous aider d'un plan pour placer le Cursor où
+            nous le voulons :
+          </p>
+          <p>
+            -Ajouter à la scène un plan (penser à sortir momentanément du BIM
+            Tool sinon vous ajouterez un nouveau mur avec le raccourci MAJ + A),
+            lui donner une dimension X de 10.665 m, le déplacer à l'angle des
+            deux murs et placer le Cursor à son autre extrémité :
+          </p>
+          <img src="./images/captures/5/wall-12.jpg" />
+          <p>
+            -Réactiver le BIM Tool, sélectionner le mur et cliquer Extend (ou
+            Raccourci MAJ + E) :
+          </p>
+          <img src="./images/captures/5/wall-13.jpg" class="img-xxs" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/wall-14.jpg" />
+          <p>
+            Poursuivre la modélisation du Rez-de-chaussée selon le plan suivant
+            :
+          </p>
+          <img src="./images/captures/5/wall-15.jpg" />
+          <h5>Passer à la modélisation des murs du sous-sol :</h5>
+          <p>Attention à vous placer dans la Collection de cet étage.</p>
+          <p>
+            -Ajouter un mur avec le BIM Tool. Celui-ci repère l'étage et y
+            positionne la base du mur.
+          </p>
+          <p>
+            Or cet étage donne le plancher fini de la cave. Notre mur possède
+            des fondations : le déplacer en Z de -0.8 m :
+          </p>
+          <img src="./images/captures/5/wall-s1-1.jpg" />
+          <p>
+            -Donner une hauteur de 2.86 m, de sorte à laisser 17 centimètre
+            entre son sommet et le niveau 00 :
+          </p>
+          <img src="./images/captures/5/wall-s1-2.jpg" class="img-xs" />
+          <p>
+            Pour éviter de répéter ces opérations, plutôt que de rajouter les
+            prochains murs avec le BIM Tool, privilégier de dupliquer ce premier
+            mur avec MAJ + D
+          </p>
+          <p class="nb">
+            &#128221; Si vous préférez modéliser en vue de dessus (Raccourci 7
+            du Pavé Numérique), ne pas hésiter à masquer toute la Collection de
+            l'étage 00.
+          </p>
+          <p>-Modéliser selon les cotes suivantes :</p>
+          <img src="./images/captures/5/wall-s1-3.jpg" />
+          <p>Résultat attendu en 3D :</p>
+          <div class="iframe-container">
+            <iframe src="./ifc/5-wall-s1/index.html" frameborder="0"> </iframe>
+          </div>
+          <h5>Etage 01</h5>
+          <p>-Dupliquer tous les murs de l'Etage 00 vers l'Etage 01 :</p>
+          <img src="./images/captures/5/wall-01-1.jpg" />
+          <p>
+            -Dans l'Outliner, ranger ces éléments dans la Collection de l'Etage
+            01 :
+          </p>
+          <img src="./images/captures/5/wall-01-2.jpg" />
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcHalfSpaceSolid & IfcOpeningElement</h3>
+        <div class="h3-chapter-content">
+          <h5>Réflexion sur la modélisation BIM : importance de la donnée</h5>
+          <p>
+            A l'étage, le sommet des murs est coupé par les pans de toiture. Le
+            plus simple géométriquement serait de déclarer leur représentation
+            géométrique comme tessellation pour leur donner la forme libre que
+            l'on souhaite.
+          </p>
+          <p>
+            Or ce faisant, ces murs ne pourraient plus être du type que nous
+            avons créé tout à l'heure, car il est défini par une épaisseur qui
+            ne saurait être interprétable sur une forme libre. Mais nous voulons
+            conservé cette métadonnée importante, donc nous allons adapter notre
+            façon de modéliser en soustrayant à ces murs des éléments "vides",
+            que nous allons pouvoir quant à eux modéliser librement.
+          </p>
+          <h5>Remarque sur les IfcHalfSpaceSolid</h5>
+          <p>
+            Un IfcHalfSpaceSolid définit un plan ou demi-plan dans l'espace à
+            utiliser comme opérateur d'une soustraction booléenne : typiquement
+            à utiliser pour soustraire la partie supérieure d'un mur coupé par
+            un pan de toiture incliné.
+          </p>
+          <p class="nb">
+            &#128221; Cette option n'a pas encore été développée dans BlenderBIM
+            ; ainsi nous modéliserons les volumes à soustraire des murs comme
+            des IfcOpeningElements, comme pour des fenêtres ou portes.
+          </p>
+          <br /><br />
+          <p class="nb">
+            &#128221; Un IfcOpeningElement ne peut couper qu'un seul élément,
+            donc il faudra en créer un pour chaque mur.
+          </p>
+          <h5>
+            Créer un IfcOpeningElement, le modifier et l'appliquer sur un mur
+          </h5>
+          <p>Sélectionner le mur suivant :</p>
+          <img src="./images/captures/5/wall-01-3.jpg" />
+          <p>Régler les accrochages sur face :</p>
+          <img src="./images/captures/5/wall-01-4.jpg" class="img-small" />
+          <p>
+            Puis placer le Cursor arbitrairement sur la face extérieure du mur,
+            et cliquer Add Void ou son raccourci Maj+O :
+          </p>
+          <img src="./images/captures/5/wall-01-5.jpg" />
+          <p>
+            Vous avez créé un élément Void, mais il faut encore l'appliquer au
+            mur. Sélectionner les deux élément et cliquer Apply Void ou Maj+O :
+          </p>
+          <img src="./images/captures/5/wall-01-6.jpg" />
+          <p>
+            Ceci a pour effet de masquer le Void. Le réafficher en sélectionnant
+            le mur et en cliquant l'icône oeil :
+          </p>
+          <img src="./images/captures/5/wall-01-7.jpg" class="img-small" />
+          <p>Changer la hauteur du mur à 3.30 m :</p>
+          <img src="./images/captures/5/wall-01-8.jpg" class="img-xs" />
+          <p>
+            Modifier le Void selon les dimensions ci-dessous. Vous pouvez le
+            faire en Mode Edition.
+          </p>
+          <p class="nb">
+            &#128221; Pour éviter toute mauvaise surprise lors de la
+            soustraction booléenne entre le mur et son vide, sur ce logiciel où
+            un autre sur lequel vous ouvrirez cet IFC, il vaut mieux éviter de
+            laisser les faces du Void coplanaires à celle du mur. Nous le
+            laissons dépasser ici arbitrairement de 50 cm.
+          </p>
+          <img src="./images/captures/5/wall-01-9.jpg" />
+          <p class="nb">
+            &#128221; La différence booléenne ne s'automatise pas en direct.
+            Pour appliquer vos modifications, cliquer le vu :
+          </p>
+          <img src="./images/captures/5/wall-01-9a.jpg" class="img-xs" />
+          <p>
+            Editer à nouveau le Void. Pour réaliser les rotations ci-après,
+            régler le Point pivot de Transformation sur le 3D Cursor :
+          </p>
+          <img src="./images/captures/5/wall-01-10.jpg" class="img-xs" />
+          <p>
+            Puis déplacer le 3D Cursor sur le sommet pointé ci-dessous. Pivoter
+            l'arête suivante de 81.5° en contraignant la rotation sur l'axe X :
+          </p>
+          <img src="./images/captures/5/wall-01-11.jpg" class="img-small" />
+          <p>
+            Répéter cette opération sur l'arête l'autre côté de l'élément d'une
+            valeur de rotation de -75.6°
+          </p>
+          <p>
+            Rendre les accrochages actifs également sur les opérations de mise à
+            l'échelle :
+          </p>
+          <img src="./images/captures/5/wall-01-12.jpg" class="img-xs" />
+          <p>
+            Pour prolonger les deux faces obliques en conservant les angles,
+            mettre à l'échelle (RC : S) l'arête en contraignant la
+            transformation sur le plan YZ (cliquer Maj X) :
+          </p>
+          <img src="./images/captures/5/wall-01-13.jpg" />
+          <p>
+            Répéter de l'autre côté. Puis extruder (RC : E) la face supérieure
+            pour englober toute la partie supérieure du mur :
+          </p>
+          <img src="./images/captures/5/wall-01-14.jpg" />
+          <p>Enfin, extruder la face inférieure de 0.244 m :</p>
+          <img src="./images/captures/5/wall-01-15.jpg" class="img-small" />
+          <p>Appliquer ces modifications. Résultat :</p>
+          <div class="iframe-container">
+            <iframe src="./ifc/5-wall-01-w1/index.html" frameborder="0">
+            </iframe>
+          </div>
+          <p>
+            Poursuivre de la même manière avec tous les autres murs de cet
+            étage, à l'exception de celui qui fait l'angle avec le mur que nous
+            venons de modéliser. Comme il ne subit pas de déformation par le
+            toit, lui donner une hauteur de 2.42 m puis modifier la jonction en
+            cliquant les deux murs dans l'ordre suivant puis cliquer Butt (RC :
+            MAJ+T) :
+          </p>
+          <img src="./images/captures/5/wall-01-16.jpg" />
+          <img src="./images/captures/5/wall-01-17.jpg" class="img-xs" />
+          <p>Conseils de modélisation :</p>
+          <p class="nb">
+            &#128221; BlenderBIM triangule automatiquement tous les points pour
+            créer les tessellations dans l'IFC. Pour fusionner momentanément
+            deux faces coplanaires ce qui facilite la modélisation : Delete ->
+            Limited dissolve :
+          </p>
+          <img src="./images/captures/5/wall-01-18.jpg" class="img-small" />
+          <p class="nb">
+            &#128221; Pour effectuer une coupe sur une face, appeler l'outil
+            Knife avec le raccourci clavier K :
+          </p>
+          <img src="./images/captures/5/wall-01-19.jpg" class="img-small" />
+          <p>Résultat attendu et cotes :</p>
+          <div class="iframe-container">
+            <iframe src="./ifc/5-wall-01-w5/index.html" frameborder="0">
+            </iframe>
+          </div>
+        </div>
+      </div>
     </section>
     <script type="module" src="./bundle.js"></script>
-</body>
+  </body>
 </html>

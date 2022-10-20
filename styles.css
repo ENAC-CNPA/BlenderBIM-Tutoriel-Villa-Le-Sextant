@@ -35,6 +35,9 @@ h3{
     border-bottom: 1px solid;
     border-color: #cccccc;
 }
+h3:hover{
+    opacity: 70%;
+}
 h4{
     font-size: 20px;
     margin-top: 30px;
@@ -44,7 +47,9 @@ h4{
     border-color: #dddddd;
 }
 h5{
-    color: #EB7700
+    color: #EB7700;
+    font-size: 15px;
+    margin-top: 20px;
 }
 h6{
     color: #D4890B;
@@ -194,6 +199,18 @@ img{
 }
 .section-nav-close{
     margin-left: 0px;   
+}
+.h3-chapter-container-button{
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    font: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+}
+.h3-chapter-content{
+    display: none;
 }
 .blender{
     color: #dddddd;

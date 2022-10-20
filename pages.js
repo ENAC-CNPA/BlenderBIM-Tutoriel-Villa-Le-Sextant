@@ -11,8 +11,8 @@ export const pages = [
     },
     {
         id : "3",
-        title: "Géoréférencement",
-        link: "georeferencement"        
+        title: "Convergence GIS-BIM",
+        link: "gis-bim"        
     },
     {
         id : "4",
@@ -23,7 +23,7 @@ export const pages = [
         id : "5",
         title: "Modéliser en IFC natif avec BlenderBIM",
         link: "modelisation-ifc"
-    },
+    }/*,
     {
         id : "6",
         title: "Types et Familles",
@@ -48,5 +48,5 @@ export const pages = [
         id : "10",
         title: "Rendus photoréalistiques",
         link: "rendus-photorealistiques"
-    }
+    }*/
 ]

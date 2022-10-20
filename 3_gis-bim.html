@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="section">
+      <div class="warning">
+        <p>&#9888;&#65039; Page en développement.</p>
+      </div>
+      <p>
+        Cette page traite des potentiels de la convergence entre le GIS
+        (Geographic Information System) et le BIM (Building Information
+        Modeling) dans le cadre d'une modélisation architecturale.
+      </p>
+      <h3>Géoréférencement</h3>
+      <p>
+        Géoréférencer une maquette numérique consiste à renseigner sa position
+        sur le globe terrestre. Cela a plusieurs utilités :
+      </p>
+      <p class="tab-1">
+        -Intégrer le projet dans son environnement naturel et bâti (terrain,
+        cadastre, accès, canalisations, etc.).
+      </p>
+      <p class="tab-1">
+        -Assurer la coordination spatiale entre plusieurs constructions dans un
+        même projet bâti.
+      </p>
+      <p class="tab-1">
+        -Tenir compte de la courbure de la terre sur des projets de grande
+        échelle.
+      </p>
+      <p class="tab-1">
+        -Permettre des calculs relatifs à la position géographique, comme
+        l’ensoleillement.
+      </p>
+      <h3>Défi géométrique</h3>
+      <p>
+        Le GIS et le BIM ont un concept similaire : attacher de l’information
+        aux représentations numériques de notre environnement, respectivement
+        territorial et bâti. Cette différence d’échelle a un impact fondamental
+        sur la définition des géométries :
+      </p>
+      <p class="tab-1">
+        -Dans les logiciels GIS, les géométries sont définies par des points
+        géoréférencés selon des Systèmes de Coordonnées de Référence (propres à
+        la terre entière, à un pays ou à une région selon la précision
+        souhaitée)
+      </p>
+      <p class="tab-1">
+        -Alors que les logiciels BIM offrent de modéliser dans un système local
+        de coordonnées cartésiennes propre au projet, pour des raisons avant tout pratiques.
+        Les plans X, Y et Z absolus sont orthonormés et orientés par rapport aux
+        axes principaux du bâtiment. C'est une abstraction permise par l'infime
+        échelle d'un projet d'architecture par rapport à la courbure de la
+        terre.
+      </p>
+      <p class="nb">
+        &#128221; Deux murs "parallèles" dressés au fil à plomb ont en réalité
+        un axe d'intersection pasant par le centre de gravité de la terre.
+      </p>
+      <p>
+        Le défi du géoréférencement consiste à définir la relation entre ces
+        deux systèmes de coordonnées ; cela induit un certain nombre de
+        transformations géométriques, que nous devons renseigner.
+      </p>
+      <div class="iframe-container">
+        <iframe src="./ifc/3-gis-bim/index.html" frameborder="0"> </iframe>
+      </div>
+      <h3>Données cartographiques</h3>
+      <p>
+        -Pour la Suisse, de la donnée cartographique en libre accès est
+        téléchargeable sur
+        <a href="https://www.swisstopo.admin.ch/" target="_blank">swisstopo</a>
+        (sous Géodonnées et applications) ou sur les guichets cantonaux comme le
+        <a href="https://ge.ch/sitg/" target="_blank">sitg</a> à Genève.
+      </p>
+      <p>
+        -Pour la France oû se trouve la Villa Le Sextant, nous trouverons de la
+        donnée sur les
+        <a href="https://geoservices.ign.fr/telechargement " target="_blank"
+          >géoservices de l'IGN</a
+        >
+      </p>
+      <h3>Approfondissement : QGIS et BlenderGIS</h3>
+      <p>
+        Pour continuer dans un environnement open source, nous vous conseillons
+        d'installer
+        <a href="https://www.qgis.org/fr/site/" target="_blank">QGIS</a> pour
+        traiter votre donnée cartographique et l'add-on
+        <a href="https://github.com/domlysz/BlenderGIS" target="_blank"
+          >BlenderGIS</a
+        >
+        pour l'importer dans Blender.
+      </p>
+      <p>
+        Cette convergence GIS-BIM fera l'objet d'un approfondissement à venir.
+        Les valeurs de géoréférencement sont données au chapitre suivant pour
+        débuter la modélisation BIM sans avoir à suivre nécessairement cet
+        approfondissement.
+      </p>
+      <p>Pour plus d'informations :</p>
+      <ul>
+        <li class="tab-1">
+          <a
+            href="https://blenderbim.org/docs/users/georeferencing.html"
+            target="_blank"
+          >
+            Explications sur le site officiel de BlenderBIM
+          </a>
+        </li>
+        <li class="tab-1">
+          <a
+            href="https://ucm.buildingsmart.org/use-case-details/2128/fr"
+            target="_blank"
+          >
+            Géoréférencement dans la méthode BIM </a
+          >, par BuildingSMART Switzerland (un guide pdf se trouve au fond de la
+          page)
+        </li>
+      </ul>
+      <!--
+      <p>
+        BlenderGIS coordonnées du projet dans N-Panel au fond de View :
+        https://community.osarch.org/discussion/1028/
+      </p>
+      <p>
+        Cela permet d'indiquer à l'avance les coordonnées terrestres du point
+        origine de Blender, et donc à l'import des shapefiles ou autres ils se
+        mettront en fonction et non à leur centre (fonctionnement de base)
+      </p>
+      -->
+    </section>
+    <script type="module" src="./bundle.js"></script>
+  </body>
+</html>

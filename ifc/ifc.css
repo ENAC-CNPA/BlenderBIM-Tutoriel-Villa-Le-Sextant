@@ -32,6 +32,11 @@ html, body {
     border-radius: 2px;
 }
 
+.ifcgridaxis-label{
+    color: black;
+    background: none;
+}
+
 #three-canvas {
     position: fixed;
     top: 0;

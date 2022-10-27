@@ -224,6 +224,11 @@ img{
     padding: 5px;
     border: solid yellow 3px;
     background-color: rgb(241, 241, 200);
+    margin-bottom: 10px;
+}
+.warning-bugs{
+    color: red;
+    font-size: 12px;
 }
 .nb{
     display: inline-block;

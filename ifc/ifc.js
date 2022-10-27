@@ -25,6 +25,8 @@ import {
   LineBasicMaterial,
   Line,
   HemisphereLight,
+  LineDashedMaterial,
+  SphereGeometry,
 } from "three";
 
 import CameraControls from "camera-controls";
@@ -39,6 +41,7 @@ import {
 import { IFCLoader } from "web-ifc-three/IFCLoader";
 
 import { IfcViewerAPI } from "web-ifc-viewer";
+import { IfcGrid } from "web-ifc-viewer/dist/components";
 
 const subsetOfTHREE = {
   MOUSE,
@@ -244,7 +247,9 @@ if (
 if (
   currentPage === "5-wall-s1/index.html" ||
   currentPage === "5-wall-01-w1/index.html" ||
-  currentPage === "5-wall-01-w5/index.html"
+  currentPage === "5-wall-01-w5/index.html" ||
+  currentPage === "5-slab/index.html"||
+  currentPage === "5-column/index.html"
 ) {
   const container = document.getElementById("viewer-container");
   const viewer = new IfcViewerAPI({
@@ -257,12 +262,46 @@ if (
 
   // Create grid and axes
   viewer.grid.setGrid();
-  //viewer.axes.setAxes();
+
+  /*
+  // Create IfcGrid. Not yet support in Ifc.js -> import as gltf
+  const ifcGridLoader = new GLTFLoader();
+  ifcGridLoader.load("../5-grid/IfcGrid.glb", function (gltf) {
+    const model = gltf.scene;
+    model.traverse(function (child) {
+      if (child instanceof Line) {
+        const ifcGridAxisName = child.name;
+        const ifcGridAxisShortName = ifcGridAxisName.substring(
+          ifcGridAxisName.lastIndexOf("IfcGridAxis") + 11
+        );
+        const firstLabel = document.createElement("span");
+        firstLabel.textContent = ifcGridAxisShortName;
+        const ifcGridAxisFirstLabel = new CSS2DObject(firstLabel);
+        ifcGridAxisFirstLabel.position.set(
+          child.geometry.attributes.position.array[0],
+          child.geometry.attributes.position.array[1],
+          child.geometry.attributes.position.array[2]
+        );
+        viewer.context.getScene().add(ifcGridAxisFirstLabel);
+        const secondLabel = document.createElement("span");
+        secondLabel.textContent = ifcGridAxisShortName;
+        const ifcGridAxisSecondLabel = new CSS2DObject(secondLabel);
+        ifcGridAxisSecondLabel.position.set(
+          child.geometry.attributes.position.array[3],
+          child.geometry.attributes.position.array[4],
+          child.geometry.attributes.position.array[5]
+        );
+        viewer.context.getScene().add(ifcGridAxisSecondLabel);
+      }
+    });
+    viewer.context.getScene().add(model);
+  });
+  */
 
   // Camera
-  const ifcCamara = viewer.context.getIfcCamera();
-  //ifcCamara.cameraControls.setPosition( 5, 15, 15 );
-  ifcCamara.cameraControls.setLookAt(4, 12, 8, 15, 0, -6);
+  const ifcCamera = viewer.context.getIfcCamera();
+  //ifcCamera.cameraControls.setPosition( 5, 15, 15 );
+  ifcCamera.cameraControls.setLookAt(4, 12, 8, 15, 0, -6);
 
   async function loadIfc(url) {
     // Load the model
@@ -270,7 +309,7 @@ if (
 
     // Add dropped shadow and post-processing effect
     await viewer.shadowDropper.renderShadow(model.modelID);
-    viewer.context.renderer.postProduction.active = true;
+    //viewer.context.renderer.postProduction.active = true;
   }
 
   loadIfc("./model.ifc");
@@ -279,7 +318,11 @@ if (
   window.onmousemove = async () => await viewer.IFC.selector.prePickIfcItem();
 
   // ADD GLB DIMENSIONS
-  if (currentPage === "5-wall-01-w5/index.html") {
+  if (
+    currentPage === "5-wall-01-w5/index.html" ||
+    currentPage === "5-slab/index.html"||
+    currentPage === "5-column/index.html"
+  ) {
     const gltfLoader = new GLTFLoader();
     gltfLoader.load("./dimensions.glb", function (gltf) {
       const model = gltf.scene;

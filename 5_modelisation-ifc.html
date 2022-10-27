@@ -9,7 +9,50 @@
   <body>
     <section id="section">
       <div class="warning">
-        <p>&#9888;&#65039; Page en développement.</p>
+        <p>
+          &#9888;&#65039; L'add-on BlenderBIM et ce tutoriel sont en
+          développement.
+        </p>
+        <div class="warning-bugs">
+          <p>Bugs en cours de report :</p>
+          <p>- Add IfcSlab on Cursor</p>
+        </div>
+        <br />
+        <p>
+          &#9888;&#65039; Les interfaces 3D sur ce site sont basées sur IFC.js,
+          projet open source également en développement.
+        </p>
+        <div class="warning-bugs">
+          <p>Bugs en cours de report :</p>
+          <p>
+            - IfcWall : joins :
+            <a
+              href="https://github.com/IFCjs/web-ifc/issues/240"
+              target="_blank"
+            >
+              github
+            </a>
+          </p>
+          <p>
+            - IfcSlab : degenerate polygon in extrude :
+            <a
+              href="https://github.com/IFCjs/web-ifc/issues/231"
+              target="_blank"
+            >
+              github
+            </a>
+          </p>
+          <p>- Affichage de l'IfcGrid</p>
+          <p>
+            - IfcColumn : couleur d'affichage
+            <a
+              href="https://github.com/IFCjs/web-ifc/issues/253"
+              target="_blank"
+            >
+              github
+            </a>
+          </p>
+        </div>
       </div>
       <div class="h3-chapter-container">
         <h3>Pourquoi modéliser en IFC natif</h3>
@@ -156,8 +199,13 @@
         </div>
       </div>
       <div class="h3-chapter-container">
-        <h3>Ifc Georeferencing</h3>
+        <h3>IFC Georeferencing</h3>
         <div class="h3-chapter-content">
+          <p>
+            La nécessité du géoréférencement est expliquée théoriquement en
+            <a href="./3_gis-bim.html">3. Convergence GIS-BIM</a>
+          </p>
+          <br />
           <p>
             -Dans les propriétés de la Scene, dérouler les menus IFC Geometry >
             IFC Georeferencing et cliquer sur le + pour ajouter un
@@ -197,7 +245,7 @@
           <p>
             -Sous Map Conversion, renseigner dans les champs Eastings et
             Northings respectivement les valeurs de longitude = 375016.2 et
-            latitude = 6518395.4 du Point de référence Planimétriques = PrefP
+            latitude = 6518395.4 du Point de référence Planimétrique = PrefP
           </p>
           <p>Ce point git à l'origine 0, 0 du modèle IFC.</p>
           <img src="./images/captures/5/georef-4.jpg" class="img-small" />
@@ -355,13 +403,8 @@
         </div>
       </div>
       <div class="h3-chapter-container">
-        <h3>IfcWall</h3>
+        <h3>IfcElementType & IFC Material</h3>
         <div class="h3-chapter-content">
-          <p>
-            Rappelons qu'une maquette IFC est structurée en étages. Ainsi un mur
-            qui apparaît continu sur plusieurs étages, sera modélisé en
-            plusieurs éléments indépendants, un par étage.
-          </p>
           <h4>Créer un IfcWallType</h4>
           <p>
             Un type d'objet définit des propriétés communes qui s'appliquent à
@@ -426,6 +469,34 @@
           <img src="./images/captures/5/walltype-16.jpg" />
           <p>Vérifier dans le N-Panel :</p>
           <img src="./images/captures/5/walltype-17.jpg" />
+          <h4>Ifc Style</h4>
+          <p>
+            Pour changer la couleur de base d'un matériau, entrer dans le
+            réglage propre à l'interface de base de Blender :
+          </p>
+          <img src="./images/captures/5/style-1.jpg" class="img-small" />
+          <p>Choisir pour la pierre les réglages suivants :</p>
+          <img src="./images/captures/5/style-2.jpg" class="img-xs" />
+          <p>
+            Descendre dans le menu et enregistrer cette modification dans l'IFC
+            en ajoutant un IFC Style à l'IFC Material :
+          </p>
+          <img src="./images/captures/5/style-3.jpg" class="img-small" />
+          <p class="nb">
+            &#128221; En cas de modification de la couleur, mettre à jour
+            l'opération dans l'IFC en cliquant ce même bouton :
+          </p>
+          <img src="./images/captures/5/style-4.jpg" class="img-small" />
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcWall & BIM Tool</h3>
+        <div class="h3-chapter-content">
+          <p>
+            Rappelons qu'une maquette IFC est structurée en étages. Ainsi un mur
+            qui apparaît continu sur plusieurs étages, sera modélisé en
+            plusieurs éléments indépendants, un par étage.
+          </p>
           <h4>BIM Tool - Dessiner un IfcWall</h4>
           <p>
             -Sélectionner dans l'Outliner la collection de l'étage 00, ce qui
@@ -527,6 +598,11 @@
             :
           </p>
           <img src="./images/captures/5/wall-15.jpg" />
+          <p>
+            Le niveau 0.0 du logiciel indique le rez fini du projet.
+            Sélectionner tous les murs et les descendre en Z de -0.02 m, pour
+            que leur base parte du radier que nous modéliserons plus tard.
+          </p>
           <h5>Passer à la modélisation des murs du sous-sol :</h5>
           <p>Attention à vous placer dans la Collection de cet étage.</p>
           <p>
@@ -709,6 +785,206 @@
           <div class="iframe-container">
             <iframe src="./ifc/5-wall-01-w5/index.html" frameborder="0">
             </iframe>
+          </div>
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcSlab</h3>
+        <div class="h3-chapter-content">
+          <a
+            href="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2_TC1/HTML/schema/ifcsharedbldgelements/lexical/ifcslab.htm"
+            target="_blank"
+          >
+            Définition d'IfcSlab
+          </a>
+          <p>
+            Précisons d'abord qu'une IfcSlab catégorise aussi bien une dalle
+            d'étage que de toiture, et qu'elle ne désigne que sa partie
+            constructive. Ainsi les finitions supérieure ou inférieure sont à
+            modéliser et informer séparément comme IfcCovering. Notons les types
+            particuliers de dalle que sont les paliers (landing) et les dalles
+            sur sol (BASESLAB).
+          </p>
+          <p class="nb">
+            &#128221; Un radier béton est un type de dalle sur sol particulier
+            en terme de structure, qui répartit les charges sur toute sa surface
+            dans des projets à forte charge ou sur des sols de moins bonne
+            qualité, contrairement à des fondations à semelles. Ce comportement
+            structurel particulier lui vaut parfois d'être catégorisé comme
+            IfcFooting plutôt qu'IfcSlab en vu d'un usage analytique de la
+            maquette numérique.
+          </p>
+          <p>
+            De la même manière que nous avions créé un IfcWallType, créer les
+            IfcSlabType suivants:
+          </p>
+          <table>
+            <thead>
+              <th>Predefined Type :</th>
+              <th>Name :</th>
+              <th>IFC Material :</th>
+              <th>IfcMaterialLayerSet / LayerSetName :</th>
+              <th>IfcMaterialLayerSet / LayerThickness :</th>
+              <th>IfcMaterial / Base Color (Hex) :</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>BASESLAB</td>
+                <td>Béton 150mm</td>
+                <td>Béton, coulé sur place</td>
+                <td>Béton, coulé sur place 150mm</td>
+                <td>0.15</td>
+                <td style="color: #999a91">999A91</td>
+              </tr>
+              <tr>
+                <td>LANDING</td>
+                <td>Béton 170mm</td>
+                <td>Béton, coulé sur place</td>
+                <td>Béton, coulé sur place 170mm</td>
+                <td>0.17</td>
+                <td style="color: #999a91">999A91</td>
+              </tr>
+              <tr>
+                <td>FLOOR</td>
+                <td>Plancher intérieur 40mm</td>
+                <td>Chêne clair</td>
+                <td>Chêne clair 40mm</td>
+                <td>0.04</td>
+                <td style="color: #b4986e">B4986E</td>
+              </tr>
+              <tr>
+                <td>FLOOR</td>
+                <td>Plancher extérieur 40mm</td>
+                <td>Pin</td>
+                <td>Pin 40mm</td>
+                <td>0.04</td>
+                <td style="color: #d3c2aa">D3C2AA</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Activer le BIM Tool, puis ajouter au sous-sol (ne pas oublier d'être
+            dans la bonne Collection) une dalle de Béton 170mm.
+          </p>
+          <p>
+            Entrer en édition de cette dalle à partir du bouton suivant du BIM
+            Tool :
+          </p>
+          <img src="./images/captures/5/slab-1.jpg" />
+          <p>
+            Cela active un série d'outils de dessins CAD pour modifier le profil
+            en plan de la dalle :
+          </p>
+          <img src="./images/captures/5/slab-2.jpg" class="img-xs" />
+          <p>Constater que vous avez bien basculé en mode Edition :</p>
+          <img src="./images/captures/5/slab-3.jpg" class="img-small" />
+          <p class="nb">
+            &#128221; Il est possible aussi d'utiliser les raccourcis
+            traditionnels de transformations (G, S, R).
+          </p>
+          <p>Suivre les dimensions suivantes :</p>
+          <img src="./images/captures/5/slab-6.jpg"class="img-big"/>
+          <p class="nb">
+            &#128221; Pour ajouter un ou des sommet(s) sur une arête : Edge ->
+            Subdivide
+          </p>
+          <p>
+            Sortir du Mode Edition en validant avec le bouton suivant du BIM
+            Tool : (sans quoi, juste avec Tab, vos modifications ne seront pas
+            enregistrée dans l'IFC)
+          </p>
+          <img src="./images/captures/5/slab-4.jpg" class="img-xs" />
+          <p>
+            Noter l'origine de l'IcfSlab à sa face inférieure. Il faut donc
+            déduire son épaisseur. Lui donner une position de Z de -2,40 m :
+          </p>
+          <img src="./images/captures/5/slab-5.jpg" />
+          <p>Poursuivre avec la dalle du rez en Béton 150mm (position Z : -0.17 m) :</p>
+          <img src="./images/captures/5/slab-7.jpg" class="img-big"/>
+          <p>Poursuivre avec les dalles d'étage en bois (position Z : 2.34 m) :</p>
+          <img src="./images/captures/5/slab-8.jpg" class="img-big"/>
+          <p>Résultat :</p>
+          <p class="warning-bugs">Bug d'affichage des dalles dans IFC.js reporté.</p>
+          <div class="iframe-container">
+            <iframe src="./ifc/5-slab/index.html" frameborder="0"> </iframe>
+          </div>
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcColumn</h3>
+        <div class="h3-chapter-content">
+          <p>
+            Alors que nous avons défini murs et dalle par leur épaisseur, nous
+            allons définir les poteaux par leur section.
+          </p>
+          <p>Créer l'IFC Material "Chêne foncé" puis les IfcColumnType suivants :</p>
+          <table>
+            <thead>
+              <th>Predefined Type :</th>
+              <th>Name :</th>
+              <th>IFC Material :</th>
+              <th>IfcMaterial / Base Color (Hex) :</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>COLUMN</td>
+                <td>Bois extérieur 140x140mm</td>
+                <td>Chêne foncé</td>
+                <td style="color: #755c33">755C33</td>
+              </tr>
+              <tr>
+                <td>COLUMN</td>
+                <td>Bois intérieur 120x180mm</td>
+                <td>Chêne foncé</td>
+                <td style="color: #755c33">755C33</td>
+              </tr>
+              <tr>
+                <td>COLUMN</td>
+                <td>Bois intérieur 140x180mm</td>
+                <td>Chêne foncé</td>
+                <td style="color: #755c33">755C33</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Pour chacun de ces types, définir un IFC Object Material comme suit :</p>
+          <img src="./images/captures/5/column-1.jpg" class="img-small"/>
+          <p>Editer en cliquant le crayon puis ajouter le matériau Chêne foncé :</p>
+          <img src="./images/captures/5/column-2.jpg" class="img-small"/>
+          <p>Editer encore un cran en-dessous avec le crayon pour définir le profil comme rectangulaire :</p>
+          <img src="./images/captures/5/column-3.jpg" />
+          <p>Puis conférer à ce profil ses valeurs X et Y :</p>
+          <img src="./images/captures/5/column-4.jpg" />
+          <p>Valider ces modifications en cliquant les différents vus qui ont pris la place des crayons.</p>
+          <h4>Précisions sur la couleur d'affichage des IFC Material</h4>
+          <p class="nb">
+            &#128221; Attention, l'IFC peut déduire la couleur d'affichage d'un
+            objet de plusieurs paramètres dépendant de la définition de son
+            matériau, et ces paramètres sont en plus interprétés par les
+            réglages proposés de base par Blender pour gérer les matériaux. S'y
+            ajoute la question de la pertinence ou non de texturer un IFC, qui
+            est un débat en cours pour les évolutions futures de l'IFC.
+          </p>
+          <p>
+            Pour l'instant, constater que pour rendre une couleur effective sur
+            un IfcColumn, il faut désactiver le bouton Use Nodes avant de
+            choisir une couleur :
+          </p>
+          <img src="./images/captures/5/column-5.jpg" class="img-small" />
+          <img src="./images/captures/5/column-6.jpg" class="img-small" />
+          <h4>Placer les IfcColumn suivants :</h4>
+          <p>Au rez-de-chaussée, suivre ces cotes (tous les poteaux sont de type 140x140, sauf les deux pointés par les flèches bleues) :</p>
+          <img src="./images/captures/5/column-7.jpg"/>
+          <p>
+            Donner à chacun de ces poteaux du rez-de-chaussée une hauteur de 2.51 m
+            et une position par rapport à l'étage de -0.17 m
+          </p>
+          <p>Dupliquer les poteaux suivants du rez au 1er étage, en changeant bien ces éléments de collection dans l'Outliner :</p>
+          <img src="./images/captures/5/column-8.jpg"/>
+          <p>Concernant les hauteurs à cet étage, donner à tous -0.04 m de décalage en bas et une hauteur de 2.46 m sauf pour le poteau suivant, à 3.03 m :</p>
+          <img src="./images/captures/5/column-9.jpg"/>
+          <p>Résultat :</p>
+          <div class="iframe-container">
+            <iframe src="./ifc/5-column/index.html" frameborder="0"> </iframe>
           </div>
         </div>
       </div>

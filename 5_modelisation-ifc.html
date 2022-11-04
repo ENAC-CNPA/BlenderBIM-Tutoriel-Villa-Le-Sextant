@@ -42,7 +42,15 @@
               github
             </a>
           </p>
-          <p>- Affichage de l'IfcGrid</p>
+          <p>
+            - Display IfcGrid
+            <a
+              href="https://github.com/IFCjs/components/issues/1"
+              target="_blank"
+            >
+              github
+            </a>
+          </p>
           <p>
             - IfcColumn : couleur d'affichage
             <a
@@ -883,7 +891,7 @@
             traditionnels de transformations (G, S, R).
           </p>
           <p>Suivre les dimensions suivantes :</p>
-          <img src="./images/captures/5/slab-6.jpg"class="img-big"/>
+          <img src="./images/captures/5/slab-6.jpg" class="img-big" />
           <p class="nb">
             &#128221; Pour ajouter un ou des sommet(s) sur une arête : Edge ->
             Subdivide
@@ -899,12 +907,19 @@
             déduire son épaisseur. Lui donner une position de Z de -2,40 m :
           </p>
           <img src="./images/captures/5/slab-5.jpg" />
-          <p>Poursuivre avec la dalle du rez en Béton 150mm (position Z : -0.17 m) :</p>
-          <img src="./images/captures/5/slab-7.jpg" class="img-big"/>
-          <p>Poursuivre avec les dalles d'étage en bois (position Z : 2.34 m) :</p>
-          <img src="./images/captures/5/slab-8.jpg" class="img-big"/>
+          <p>
+            Poursuivre avec la dalle du rez en Béton 150mm (position Z : -0.17
+            m) :
+          </p>
+          <img src="./images/captures/5/slab-7.jpg" class="img-big" />
+          <p>
+            Poursuivre avec les dalles d'étage en bois (position Z : 2.34 m) :
+          </p>
+          <img src="./images/captures/5/slab-8.jpg" class="img-big" />
           <p>Résultat :</p>
-          <p class="warning-bugs">Bug d'affichage des dalles dans IFC.js reporté.</p>
+          <p class="warning-bugs">
+            Bug d'affichage des dalles dans IFC.js reporté.
+          </p>
           <div class="iframe-container">
             <iframe src="./ifc/5-slab/index.html" frameborder="0"> </iframe>
           </div>
@@ -917,7 +932,9 @@
             Alors que nous avons défini murs et dalle par leur épaisseur, nous
             allons définir les poteaux par leur section.
           </p>
-          <p>Créer l'IFC Material "Chêne foncé" puis les IfcColumnType suivants :</p>
+          <p>
+            Créer l'IFC Material "Chêne foncé" puis les IfcColumnType suivants :
+          </p>
           <table>
             <thead>
               <th>Predefined Type :</th>
@@ -946,15 +963,26 @@
               </tr>
             </tbody>
           </table>
-          <p>Pour chacun de ces types, définir un IFC Object Material comme suit :</p>
-          <img src="./images/captures/5/column-1.jpg" class="img-small"/>
-          <p>Editer en cliquant le crayon puis ajouter le matériau Chêne foncé :</p>
-          <img src="./images/captures/5/column-2.jpg" class="img-small"/>
-          <p>Editer encore un cran en-dessous avec le crayon pour définir le profil comme rectangulaire :</p>
+          <p>
+            Pour chacun de ces types, définir un IFC Object Material comme suit
+            :
+          </p>
+          <img src="./images/captures/5/column-1.jpg" class="img-small" />
+          <p>
+            Editer en cliquant le crayon puis ajouter le matériau Chêne foncé :
+          </p>
+          <img src="./images/captures/5/column-2.jpg" class="img-small" />
+          <p>
+            Editer encore un cran en-dessous avec le crayon pour définir le
+            profil comme rectangulaire :
+          </p>
           <img src="./images/captures/5/column-3.jpg" />
           <p>Puis conférer à ce profil ses valeurs X et Y :</p>
           <img src="./images/captures/5/column-4.jpg" />
-          <p>Valider ces modifications en cliquant les différents vus qui ont pris la place des crayons.</p>
+          <p>
+            Valider ces modifications en cliquant les différents vus qui ont
+            pris la place des crayons.
+          </p>
           <h4>Précisions sur la couleur d'affichage des IFC Material</h4>
           <p class="nb">
             &#128221; Attention, l'IFC peut déduire la couleur d'affichage d'un
@@ -972,22 +1000,137 @@
           <img src="./images/captures/5/column-5.jpg" class="img-small" />
           <img src="./images/captures/5/column-6.jpg" class="img-small" />
           <h4>Placer les IfcColumn suivants :</h4>
-          <p>Au rez-de-chaussée, suivre ces cotes (tous les poteaux sont de type 140x140, sauf les deux pointés par les flèches bleues) :</p>
-          <img src="./images/captures/5/column-7.jpg"/>
           <p>
-            Donner à chacun de ces poteaux du rez-de-chaussée une hauteur de 2.51 m
-            et une position par rapport à l'étage de -0.17 m
+            Au rez-de-chaussée, suivre ces cotes (tous les poteaux sont de type
+            140x140, sauf les deux pointés par les flèches bleues) :
           </p>
-          <p>Dupliquer les poteaux suivants du rez au 1er étage, en changeant bien ces éléments de collection dans l'Outliner :</p>
-          <img src="./images/captures/5/column-8.jpg"/>
-          <p>Concernant les hauteurs à cet étage, donner à tous -0.04 m de décalage en bas et une hauteur de 2.46 m sauf pour le poteau suivant, à 3.03 m :</p>
-          <img src="./images/captures/5/column-9.jpg"/>
+          <img src="./images/captures/5/column-7.jpg" />
+          <p>
+            Donner à chacun de ces poteaux du rez-de-chaussée une hauteur de
+            2.51 m et une position par rapport à l'étage de -0.17 m
+          </p>
+          <p>
+            Dupliquer les poteaux suivants du rez au 1er étage, en changeant
+            bien ces éléments de collection dans l'Outliner :
+          </p>
+          <img src="./images/captures/5/column-8.jpg" />
+          <p>
+            Concernant les hauteurs à cet étage, donner à tous -0.04 m de
+            décalage en bas et une hauteur de 2.46 m sauf pour le poteau
+            suivant, à 3.03 m :
+          </p>
+          <img src="./images/captures/5/column-9.jpg" />
           <p>Résultat :</p>
           <div class="iframe-container">
             <iframe src="./ifc/5-column/index.html" frameborder="0"> </iframe>
           </div>
         </div>
       </div>
+      <!--
+      <div class="h3-chapter-container">
+        <h3>IfcBeam & IFC Array</h3>
+        <div class="h3-chapter-content">
+          <p>
+            Comme les dalles, on classe généralement les poutres dans l'étage
+            qu'elles supportent. C'est aussi pourquoi nous avons créé un étage
+            supplémentaire spécialement dédié au toit.
+          </p>
+          <h4>Créer les poutres du 1er étage</h4>
+          <p>
+            Nous allons commencer par les poutres supportant le 1er étage, dont
+            certaines ont un profil non pas rectangulaire mais en L.
+          </p>
+          <h4>Définir un profil particulier en L pour un IfcBeamType</h4>
+          <p>
+            On peut imaginer tout type de profil pour une poutre ; certains
+            d'entre eux sont rencontrés régulièrement dans l'industrie du
+            bâtiment et ont donc été standardisés dans le schéma IFC. C'est le
+            cas des profils en L.
+          </p>
+          <p>
+            Voir la définition d'
+            <a
+              href="https://standards.buildingsmart.org/IFC/DEV/IFC4_3/RC2/HTML/schema/ifcprofileresource/lexical/ifclshapeprofiledef.htm"
+            >
+              IfcLShapeProfileDef
+            </a>
+            par buildingSMART
+          </p>
+          <table>
+            <thead>
+              <th>Predefined Type :</th>
+              <th>Name :</th>
+              <th>IFC Material :</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>JOIST</td>
+                <td>Solive avec Encastrement 100x200mm</td>
+                <td>Chêne clair</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table>
+            <thead>
+              <th>Predefined Type :</th>
+              <th>Name :</th>
+              <th>IFC Material :</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>T-BEAM</td>
+                <td>Bastaing 100x160mm</td>
+                <td>Chêne clair</td>
+              </tr>
+              <tr>
+                <td>T-BEAM</td>
+                <td>Bastaing 100x150mm</td>
+                <td>Chêne clair</td>
+              </tr>
+              <tr>
+                <td>T-BEAM</td>
+                <td>Bastaing 100x210mm</td>
+                <td>Chêne clair</td>
+              </tr>
+              <tr>
+                <td>JOIST</td>
+                <td>Solive avec Encastrement 100x200mm</td>
+                <td>Chêne clair</td>
+              </tr>
+              <tr>
+                <td>JOIST</td>
+                <td>Solive 50x110mm</td>
+                <td>Chêne clair</td>
+              </tr>
+              <tr>
+                <td>JOIST</td>
+                <td>Solive 100x150mm</td>
+                <td>Chêne clair</td>
+              </tr>
+              <tr>
+                <td>JOIST</td>
+                <td>Solive 100x110mm</td>
+                <td>Pin peint foncé</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Pour ce dernier type, créer l'IFC Material avec la couleur :
+            <span style="color: #42220c">42220C</span>
+          </p>
+          <h4>Profil en L</h4>
+        </div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcAssembly</h3>
+        <div class="h3-chapter-content"></div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcRoof</h3>
+        <div class="h3-chapter-content"></div>
+      </div>
+      -->
     </section>
     <script type="module" src="./bundle.js"></script>
   </body>

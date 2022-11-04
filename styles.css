@@ -94,8 +94,8 @@ a:hover{
     text-decoration: underline;
 }
 iframe {
-    width: 70%;
-    height: 50vh;
+    width: 90%;
+    height: 70vh;
     overflow: hidden; 
     display: block;
     margin: 10px auto;

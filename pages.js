@@ -21,7 +21,7 @@ export const pages = [
     },
     {
         id : "5",
-        title: "Modéliser en IFC natif avec BlenderBIM",
+        title: "Modéliser & Informer en IFC natif avec BlenderBIM",
         link: "modelisation-ifc"
     }/*,
     {

@@ -63,18 +63,18 @@
         </div>
       </div>
       <div class="h3-chapter-container">
-        <h3>Pourquoi modéliser en IFC natif</h3>
+        <h3>Concept de l'IFC natif</h3>
         <div class="h3-chapter-content">
           <h4>
-            Créer directement une donnée interopérable, accessible à tous et
-            durable
+            Créer directement une donnée interopérable, accessible, indépendante
+            et durable
           </h4>
           <p>
             Traditionnellement, l'IFC est considéré comme un format d'export non
             éditable, servant à partager une maquette numérique modélisée dans
-            un format propre à votre logiciel. Cela implique des limites et
-            erreurs de conversion propres à chaque logiciel, ce qui bride son
-            interopérabilité.
+            un format propre à votre logiciel (.rvt pour Revit, .pln pour
+            Archicad, etc). Cela implique des limites et erreurs de conversion
+            propres à chaque logiciel, ce qui bride son interopérabilité.
           </p>
           <p>
             Pour y parer, BlenderBIM propose de modéliser et informer son projet
@@ -95,8 +95,8 @@
           </p>
           <p>
             Modéliser en IFC natif assurera à votre maquette numérique d'être
-            construite sur une donnée interopérable, accessible à tous, et
-            durable.
+            construite sur une donnée interopérable, accessible à tous,
+            indépendante du logiciel de création et durable.
           </p>
           <h4>Blender est une fenêtre sur votre IFC</h4>
           <p>
@@ -404,7 +404,7 @@
             IfcBuildingStorey :
           </p>
           <img src="./images/captures/5/storey-4.jpg" />
-          <p>Renommer et déplacer selon le tableau plus haut.</p>
+          <p>Renommer et déplacer en Z selon le tableau plus haut.</p>
           <p>Résultat :</p>
           <img src="./images/captures/5/storey-5.jpg" />
           <img src="./images/captures/5/storey-6.jpg" class="img-small" />
@@ -1026,102 +1026,342 @@
           </div>
         </div>
       </div>
-      <!--
       <div class="h3-chapter-container">
-        <h3>IfcBeam & IFC Array</h3>
+        <h3>IFC Profiles & IfcBeamType</h3>
         <div class="h3-chapter-content">
           <p>
-            Comme les dalles, on classe généralement les poutres dans l'étage
-            qu'elles supportent. C'est aussi pourquoi nous avons créé un étage
-            supplémentaire spécialement dédié au toit.
-          </p>
-          <h4>Créer les poutres du 1er étage</h4>
-          <p>
-            Nous allons commencer par les poutres supportant le 1er étage, dont
-            certaines ont un profil non pas rectangulaire mais en L.
-          </p>
-          <h4>Définir un profil particulier en L pour un IfcBeamType</h4>
-          <p>
-            On peut imaginer tout type de profil pour une poutre ; certains
-            d'entre eux sont rencontrés régulièrement dans l'industrie du
-            bâtiment et ont donc été standardisés dans le schéma IFC. C'est le
-            cas des profils en L.
+            Généralement, une poutre est typiquement un produit préfabriqué issu
+            de l'industrie, et donc avec des formes et dimensions standardes. Le
+            schéma IFC offre ainsi toute une série de sortes de profils (en C,
+            en L, etc) à définir par des
+            <span style="text-decoration: underline">paramètres</span>.
+            L'alternative consiste à définir son propre profil arbitraire par
+            son <span style="text-decoration: underline">dessin en 2D</span>.
           </p>
           <p>
-            Voir la définition d'
-            <a
-              href="https://standards.buildingsmart.org/IFC/DEV/IFC4_3/RC2/HTML/schema/ifcprofileresource/lexical/ifclshapeprofiledef.htm"
-            >
-              IfcLShapeProfileDef
-            </a>
-            par buildingSMART
+            Nous créerons d'abord les profils, puis les types de poutres que
+            nous définirons par ces profils.
           </p>
+          <h4>
+            Créer avec des paramètres un profil de forme standardisée
+            IfcRectangleProfileDef
+          </h4>
+          <p>
+            Dans les propriétés de la scène > IFC Geometry > IFC Profiles,
+            éditer avec le crayon :
+          </p>
+          <img src="./images/captures/5/profile-1.jpg" class="img-small" />
+          <p>
+            Dans la liste déroulante, choisir IFCRectangleProfileDef puis
+            ajouter un profile avec le plus :
+          </p>
+          <img src="./images/captures/5/profile-2.jpg" class="img-small" />
+          <p>Entrer en édition du profil en cliquant le crayon :</p>
+          <img src="./images/captures/5/profile-3.jpg" class="img-small" />
+          <p>Entrer le nom et les valeurs suivants :</p>
+          <img src="./images/captures/5/profile-4.jpg" class="img-small" />
+          <p>
+            Valider avec le vu puis répéter avec les deux profils suivants :
+          </p>
+          <img src="./images/captures/5/profile-5.jpg" class="img-small" />
+          <h4>
+            Créer avec un dessin son propre profil arbitraire
+            IfcArbitraryClosedProfileDef
+          </h4>
+          <p class="nb">
+            &#128221; Il existe dans le schéma IFC un profil en L à prédéfinir
+            par des paramètres : IfcLShapeProfileDef. Mais il impose des
+            épaisseurs égales entre les deux branches du L, ce qui ne correspond
+            pas aux profils que nous voulons créer ici.
+          </p>
+          <p>
+            Ajouter depuis la liste déroulante un IfcArbitraryClosedProfileDef :
+          </p>
+          <img src="./images/captures/5/profile-6.jpg" class="img-small" />
+          <p>Renommer puis éditer ce profil :</p>
+          <img src="./images/captures/5/profile-7.jpg" class="img-small" />
+          <p>
+            Son dessin en 2D apparaît alors à l'origine du projet, en Edit Mode.
+          </p>
+          <img src="./images/captures/5/profile-8.jpg" class="img-small" />
+          <p>
+            Placer vous en vue de dessus (7 du pav. num.) puis zoomer sur la
+            sélection (. du pav. num.) :
+          </p>
+          <img src="./images/captures/5/profile-9.jpg" class="img-small" />
+          <p>
+            Dessiner le profil suivant (Pour ajouter un sommet à une arrête,
+            sélectionner puis Edge > Subdivide, ou Ctrl+R) :
+          </p>
+          <img src="./images/captures/5/profile-10.jpg" class="img-small" />
+          <p>
+            Valider l'édition de ce profil en cliquant les boutons suivants :
+          </p>
+          <img src="./images/captures/5/profile-11.jpg" class="img-small" />
+          <p>Répéter avec les 3 profils suivants :</p>
+          <p>100x210mm :</p>
+          <img src="./images/captures/5/profile-12.jpg" class="img-small" />
+          <p>100x150mm :</p>
+          <img src="./images/captures/5/profile-13.jpg" class="img-small" />
+          <p>100x160mm :</p>
+          <img src="./images/captures/5/profile-14.jpg" class="img-small" />
+          Résultat :
+          <img src="./images/captures/5/profile-15.jpg" />
+          <h4>Créer un IfcBeamType défini par un profil :</h4>
+          <p>Nous créerons les IfcBeamType suivants :</p>
           <table>
             <thead>
               <th>Predefined Type :</th>
               <th>Name :</th>
               <th>IFC Material :</th>
+              <th colspan="2">IFC Profile</th>
             </thead>
             <tbody>
               <tr>
                 <td>JOIST</td>
-                <td>Solive avec Encastrement 100x200mm</td>
+                <td>Solive Chêne clair 50x110mm</td>
                 <td>Chêne clair</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table>
-            <thead>
-              <th>Predefined Type :</th>
-              <th>Name :</th>
-              <th>IFC Material :</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>T-BEAM</td>
-                <td>Bastaing 100x160mm</td>
-                <td>Chêne clair</td>
-              </tr>
-              <tr>
-                <td>T-BEAM</td>
-                <td>Bastaing 100x150mm</td>
-                <td>Chêne clair</td>
-              </tr>
-              <tr>
-                <td>T-BEAM</td>
-                <td>Bastaing 100x210mm</td>
-                <td>Chêne clair</td>
+                <td>50x110mm</td>
+                <td>IfcRectangleProfileDef</td>
               </tr>
               <tr>
                 <td>JOIST</td>
-                <td>Solive avec Encastrement 100x200mm</td>
-                <td>Chêne clair</td>
-              </tr>
-              <tr>
-                <td>JOIST</td>
-                <td>Solive 50x110mm</td>
-                <td>Chêne clair</td>
-              </tr>
-              <tr>
-                <td>JOIST</td>
-                <td>Solive 100x150mm</td>
-                <td>Chêne clair</td>
+                <td>Solive Chêne foncé 50x110mm</td>
+                <td>Chêne foncé</td>
+                <td>50x110mm</td>
+                <td>IfcRectangleProfileDef</td>
               </tr>
               <tr>
                 <td>JOIST</td>
                 <td>Solive 100x110mm</td>
                 <td>Pin peint foncé</td>
+                <td>100x110mm</td>
+                <td>IfcRectangleProfileDef</td>
+              </tr>
+              <tr>
+                <td>JOIST</td>
+                <td>Solive 100x150mm</td>
+                <td>Chêne clair</td>
+                <td>100x150mm</td>
+                <td>IfcRectangleProfileDef</td>
+              </tr>
+              <tr>
+                <td>T-BEAM</td>
+                <td>Bastaing 100x150mm</td>
+                <td>Chêne clair</td>
+                <td>100x150mm</td>
+                <td>IfcArbitraryClosedProfileDef</td>
+              </tr>
+              <tr>
+                <td>T-BEAM</td>
+                <td>Bastaing 100x160mm</td>
+                <td>Chêne clair</td>
+                <td>100x160mm</td>
+                <td>IfcArbitraryClosedProfileDef</td>
+              </tr>
+              <tr>
+                <td>T-BEAM</td>
+                <td>Solive avec Encastrement 100x200mm</td>
+                <td>Chêne clair</td>
+                <td>100x200mm</td>
+                <td>IfcArbitraryClosedProfileDef</td>
+              </tr>
+              <tr>
+                <td>T-BEAM</td>
+                <td>Bastaing 100x210mm</td>
+                <td>Bois de construction</td>
+                <td>100x210mm</td>
+                <td>IfcArbitraryClosedProfileDef</td>
               </tr>
             </tbody>
           </table>
           <p>
-            Pour ce dernier type, créer l'IFC Material avec la couleur :
-            <span style="color: #42220c">42220C</span>
+            Au préalable, créer les deux IFC Material suivants (penser à
+            désactiver Use nodes) :
           </p>
-          <h4>Profil en L</h4>
+          <table>
+            <thead>
+              <th>IFC Material</th>
+              <th>Color</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pin peint foncé</td>
+                <td style="color: #42220c">#42220C</td>
+              </tr>
+              <tr>
+                <td>Bois de construction</td>
+                <td style="color: #dfc086">#DFC086</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Pour créer un IfcBeamType : ajouter à la scène un Empty>Plain Axes,
+            puis le déclarer en IfcBeamType :
+          </p>
+          <img src="./images/captures/5/beamtype-1.jpg" />
+          <p>Renommer :</p>
+          <img src="./images/captures/5/beamtype-2.jpg" class="img-small" />
+          <p>
+            Ajouter un IfcMaterialProfileSet, ce qui définira ce type par son
+            profil que nous avons créé au précédent chapitre :
+          </p>
+          <img src="./images/captures/5/beamtype-3.jpg" class="img-small" />
+          <p>
+            Editer avec le crayon, choisir les valeurs selon le tableau plus
+            haut, ajouter avec le plus puis valider l'édition avec la coche
+          </p>
+          <img src="./images/captures/5/beamtype-4.jpg" />
         </div>
       </div>
+      <div class="h3-chapter-container">
+        <h3>IfcBeam & IFC Array</h3>
+        <div class="h3-chapter-content">
+          <p>Cacher les dalles dans l'Outliner (Rac. : H)</p>
+          <h4>Ajouter une IfcBeam</h4>
+          <p>
+            Comme les dalles, on classe les poutres dans l'étage qu'elles
+            supportent. C'est aussi pourquoi nous avons créé un étage
+            supplémentaire spécialement dédié au toit. Commençons donc ici par
+            le premier étage, en nous plaçant dans la bonne Collection :
+          </p>
+          <h5>Bastaing 100x150mm</h5>
+          <img src="./images/captures/5/beam-1.jpg" class="img-xs" />
+          <p>
+            Activer le BIM Tool. Sélectionner le type suivant et entrer une
+            longueur de 12.685 :
+          </p>
+          <img src="./images/captures/5/beam-2.jpg" class="img-big" />
+          <p class="nb">
+            &#128221; L'icône à droite du menu déroulant des types ouvre une
+            galerie des types que contient l'IFC, avec leur profil :
+          </p>
+          <img src="./images/captures/5/beam-3.jpg" />
+          <p class="nb">
+            &#128221; Le menu Axis permet d'ajuster l'alignement du profil de la
+            poutre par rapport à l'origine de l'objet :
+          </p>
+          <img src="./images/captures/5/beam-4.jpg" class="img-small" />
+          <p>
+            Ajouter une poutre, la pivoter en plan de 180° et lui donner
+            l'emplacement suivant :
+          </p>
+          <img src="./images/captures/5/beam-6.jpg" class="img-xs" />
+          Résultat en élévation nord :
+          <img src="./images/captures/5/beam-7.jpg" class="img" />
+          Dupliquer cette première poutre symétriquement par rapport à son
+          poteau. Puis répéter sur les 4 poteaux suivants :
+          <img src="./images/captures/5/beam-8.jpg" class="img" />
+          <h5>Bastaing 100x160mm</h5>
+          <p>Dupliquer la dernière paire de poutres de 2.887m vers l'Est.</p>
+          <img src="./images/captures/5/beam-9.jpg" class="img" />
+          <p>Editer le type :</p>
+          <img src="./images/captures/5/beam-10.jpg" class="img-small" />
+          <p>
+            Ramener les extrémités de ces deux poutres entres les deux murs
+            cadrant le passage.
+          </p>
+          <img src="./images/captures/5/beam-11.jpg" class="img-small" />
+          <h5>Bastaing 100x160mm</h5>
+          <p>
+            Dupliquer ces deux dernières poutres de 282.09m vers l'Est, leur
+            donner une longueur de 5.545m, puis les encastrer de 0.0995m dans le
+            mur nord :
+          </p>
+          <img src="./images/captures/5/beam-12.jpg" class="img-small" />
+          <h5>Solive Chêne clair 50x110mm</h5>
+          <p>Ajouter une poutre de 2.36m et lui donner cet emplacement :</p>
+          <img src="./images/captures/5/beam-13.jpg" class="img-xs" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/beam-14.jpg" class="img-small" />
+          <h4>Dupliquer une série de poutres avec un IfcArray</h4>
+          <p>
+            Le schéma IFC supporte le concept de réseau, ou matrice, sous le
+            concept d'IfcArray, qui duplique un élément selon une suite définie.
+          </p>
+          <p>
+            BlenderBIM range cette option sous les Modifiers de Blender. Avec la
+            dernière poutre sélectionnée, ajouter un IFC Array :
+          </p>
+          <img src="./images/captures/5/beam-15.jpg" class="img" />
+          <p>
+            Entrer en édition en cliquant le crayon, renseigner les paramètres
+            suivants puis valider :
+          </p>
+          <img src="./images/captures/5/beam-16.jpg" class="img-small" />
+          <p>Résultat dans la scène :</p>
+          <img src="./images/captures/5/beam-17.jpg" class="img-small" />
+          <p>Résultat dans l'Outliner :</p>
+          <img src="./images/captures/5/beam-18.jpg" class="img-xs" />
+
+          <div class="warning">
+            <p>
+              &#9888;&#65039; L'IFC Array a pour l'instant quelques bugs à
+              l'édition et à la duplication, reportés ici :
+            </p>
+            <a
+              href="https://community.osarch.org/discussion/1185/blenderbim-re-inventing-the-array-modifier-in-blender-to-make-it-suitable-for-copying-of-ifc-elem#latest"
+              target="_blank"
+              >https://community.osarch.org/discussion/1185/blenderbim-re-inventing-the-array-modifier-in-blender-to-make-it-suitable-for-copying-of-ifc-elem#latest</a
+            >
+          </div>
+          <p>
+            Répéter l'opération sur les 3 rangées suivantes, avec le type chêne
+            foncé sur la dernière. Au vu du bug sur la duplication des array,
+            recréer à chaque fois la première poutre avec le BIM Tool.
+          </p>
+          <p>
+            -Adapter la longueur des poutres avec le Cursor et la commande
+            Extend du BIM Tool (Maj E)
+          </p>
+          <img src="./images/captures/5/beam-19.jpg" class="img" />
+          <p>Ajouter une poutre de 2.36m et lui donner cet emplacement :</p>
+          <img src="./images/captures/5/beam-20.jpg" class="img-xs" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/beam-21.jpg" class="img-small" />
+          <p>Ajouter cet array :</p>
+          <img src="./images/captures/5/beam-22.jpg" class="img-small" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/beam-23.jpg" class="img-small" />
+          <p>
+            Répéter avec les rangées suivantes (avec, pour les deux dernières,
+            des arrays de 3 et de 12) :
+          </p>
+          <img src="./images/captures/5/beam-24.jpg" class="img" />
+          <p>
+            Ajouter les deux poutres suivantes, au ras des poutres transversales
+            :
+          </p>
+          <img src="./images/captures/5/beam-25.jpg" class="img" />
+
+          <h5>Solive 100x110mm</h5>
+          <p>
+            Compléter la 5ème rangée sud sans utiliser d'array, comme suit. Les
+            deux poutres plus larges sont du type : Solive 100x110mm.
+          </p>
+          <p>
+            La commande Duplicate de Blender (Maj + D) bug pour l'instant avec
+            BlenderBIM, qui ne duplique pas les éléments dans l'IFC. Éviter donc
+            de l'utiliser et créer ces poutres une à une avec le BIM Tool :
+          </p>
+          <img src="./images/captures/5/beam-26.jpg" class="img-small" />
+
+          <h5>Solive 100x150mm</h5>
+          <p>
+            Terminer avec l'avant-dernière rangée. Les poutres plus épaisses
+            sont de type : Solive 100x150mm. Faire un array pour les poutres le
+            long de l'ouverture :
+          </p>
+          <img src="./images/captures/5/beam-27.jpg" class="img-small" />
+          <p>Résultat (avec les dalles du 1er étage cachées) :</p>
+          <img src="./images/captures/5/beam-28.jpg" class="img" />
+          <p>Résultat en 3D :</p>
+          <div class="iframe-container">
+            <iframe src="./ifc/5-beam/index.html" frameborder="0"> </iframe>
+          </div>
+        </div>
+      </div>
+      <!--
       <div class="h3-chapter-container">
         <h3>IfcAssembly</h3>
         <div class="h3-chapter-content"></div>
@@ -1130,8 +1370,7 @@
         <h3>IfcRoof</h3>
         <div class="h3-chapter-content"></div>
       </div>
-      -->
-    </section>
+    --></section>
     <script type="module" src="./bundle.js"></script>
   </body>
 </html>

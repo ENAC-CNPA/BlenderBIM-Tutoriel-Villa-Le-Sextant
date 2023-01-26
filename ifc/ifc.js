@@ -248,8 +248,9 @@ if (
   currentPage === "5-wall-s1/index.html" ||
   currentPage === "5-wall-01-w1/index.html" ||
   currentPage === "5-wall-01-w5/index.html" ||
-  currentPage === "5-slab/index.html"||
-  currentPage === "5-column/index.html"
+  currentPage === "5-slab/index.html" ||
+  currentPage === "5-column/index.html" ||
+  currentPage === "5-beam/index.html"
 ) {
   const container = document.getElementById("viewer-container");
   const viewer = new IfcViewerAPI({
@@ -320,7 +321,7 @@ if (
   // ADD GLB DIMENSIONS
   if (
     currentPage === "5-wall-01-w5/index.html" ||
-    currentPage === "5-slab/index.html"||
+    currentPage === "5-slab/index.html" ||
     currentPage === "5-column/index.html"
   ) {
     const gltfLoader = new GLTFLoader();

@@ -2,6 +2,7 @@ import { pages } from "./pages.js";
 
 // CURRENT PAGE
 const currentUrl = window.location.href;
+const currentPageUrl = currentUrl.substring(currentUrl.lastIndexOf("/"));
 const currentPageId = currentUrl.substring(
   currentUrl.lastIndexOf("/") + 1,
   currentUrl.lastIndexOf("_")
@@ -82,6 +83,14 @@ navCloseButton.classList.add("nav-button");
 navCloseButton.textContent = "\u25BE";
 nav.appendChild(navCloseButton);
 
+//VISIONNEUSE BIM
+const viewerButton = document.createElement("a");
+viewerButton.textContent = "Ouvrir la visionneuse BIM";
+viewerButton.setAttribute("id", "viewer-button");
+viewerButton.setAttribute("href", "./viewer/viewer.html");
+viewerButton.setAttribute("target", "_blank");
+nav.appendChild(viewerButton);
+
 const navListTitle = document.createElement("p");
 navListTitle.classList.add("nav-list-title");
 navListTitle.textContent = "PAGES :";
@@ -136,6 +145,9 @@ for (let page of pages) {
       } else {
         subItem.classList.add("sub-item-h4");
       }
+      if (currentPageId === "5" && subHeading.tagName === "H4") {
+        subItem.style.display = "none";
+      }
       subItem.appendChild(subItemAnchor);
       subList.append(subItem);
     }
@@ -169,6 +181,7 @@ section.classList.add("section-nav-open");
 navCloseButton.onclick = () => {
   navOpenButton.style.display = "block";
   navCloseButton.style.display = "none";
+  viewerButton.style.display = "none";
   navListTitle.style.display = "none";
   nav.classList.add("nav-close");
   navList.style.display = "none";
@@ -178,6 +191,7 @@ navCloseButton.onclick = () => {
 navOpenButton.onclick = () => {
   navOpenButton.style.display = "none";
   navCloseButton.style.display = "block";
+  viewerButton.style.display = "block";
   navListTitle.style.display = "block";
   nav.classList.remove("nav-close");
   navList.style.display = "block";
@@ -186,7 +200,23 @@ navOpenButton.onclick = () => {
 };
 
 // PAGES COMMONS
-document.body.prepend(header, nav);
+/*
+if (currentPageUrl != "/viewer-container.html") {
+  document.body.prepend(header, nav, bimViewerButton);
+} else {
+  section.classList.remove("section-nav-open");
+  section.classList.add("section-nav-close");
+  document.body.prepend(header);
+}
+*/
+
+if (currentPageUrl != "/viewer-container.html") {
+  document.body.prepend(header, nav);
+} else {
+  section.classList.remove("section-nav-open");
+  section.classList.add("section-nav-close");
+  document.body.prepend(header);
+}
 
 // PAGE TITLE H2
 const heading2 = document.createElement("h2");

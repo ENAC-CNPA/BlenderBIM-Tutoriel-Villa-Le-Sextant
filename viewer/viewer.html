@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" type="image/x-icon" href="../epfl/favicon.ico" />
+    <title>Tutoriel BlenderBIM - Villa Le Sextant</title>
+  </head>
+  <body>
+    <header id="viewer-header">
+      <div id="header-logos-container">
+        <a href="https://www.epfl.ch/fr/" target="blank">
+          <img
+            id="header-logo-epfl"
+            src="https://www.epfl.ch/wp/5.5/wp-content/themes/wp-theme-2018/assets/svg/epfl-logo.svg?refresh=now"
+            alt="Logo EPFL, École polytechnique fédérale de Lausanne"
+          />
+        </a>
+        <a href="https://www.epfl.ch/schools/enac/fr/" target="blank">
+          <img
+            class="header-logo-unite"
+            src="../epfl/EPFL_Unités_ENAC.png"
+            alt="Logo ENAC, Faculté de l’environnement naturel, architectural et construit"
+          />
+        </a>
+        <a href="https://www.epfl.ch/labs/cnpa/fr/" target="blank">
+          <img
+            class="header-logo-unite"
+            src="../epfl/EPFL_Unités_CNPA.png"
+            alt="Logo CNPA, Laboratoire des cultures numériques du projet architectural"
+          />
+        </a>
+      </div>
+      <h1>Tutoriel BlenderBIM - Villa Le Sextant</h1>
+    </header>
+    <section id="viewer-section">
+      <div id="drop-instruction">
+        <p>
+          Glisser-déposer votre maquette numérique IFC n'importe où sur cette
+          fenêtre pour la charger dans le navigateur.
+        </p>
+      </div>
+      <div id="spinner-container">
+        <div class="spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div id="viewer-container"></div>
+      <div id="ifc-property-menu">
+        <div class="ifc-property-item">
+          <p>IfcProperty:</p>
+          <div class="ifc-property-value">Valeur:</div>
+        </div>
+        <div id="ifc-property-menu-root"></div>
+      </div>
+      <div id="ifc-selection-properties">
+        <p>Nom : <span id="ifc-selected-item-properties-name">-</span></p>
+        <p>
+          Description :
+          <span id="ifc-selected-item-properties-description">-</span>
+        </p>
+      </div>
+      <div id="buttons-container">
+        <button id="infos-button" class="button" title="Simple-clic">
+          Informations
+        </button>
+        <button id="clipper-button" class="button" title="Simple-clic">
+          Couper
+        </button>
+        <button id="dimensions-button" class="button" title="Simple-clic">
+          Mesurer
+        </button>
+        <p id="button-instructions">
+          <span id="button-instructions-main"></span>
+          <span id="button-instructions-escape"
+            >Touche <span class="font-weight-bold">Esc</span> pour sortir de
+            l'outil.</span
+          >
+        </p>
+      </div>
+    </section>
+    <script type="module" src="./viewer-bundle.js"></script>
+  </body>
+</html>

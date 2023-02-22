@@ -12,8 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "three": "^0.135.0",
-    "web-ifc-three": "^0.0.121",
-    "web-ifc-viewer": "^1.0.213"
+    "web-ifc-three": "git+https://github.com/IFCjs/web-ifc-three.git",
+    "web-ifc-viewer": "git+https://github.com/IFCjs/web-ifc-viewer.git"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^14.1.0",

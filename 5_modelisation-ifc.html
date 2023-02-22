@@ -13,6 +13,21 @@
           &#9888;&#65039; L'add-on BlenderBIM et ce tutoriel sont en
           développement.
         </p>
+        <div class="warning-bugs">
+          <p>Bugs en cours de report :</p>
+          <p>
+            - Attention à désactiver l'add-on BlenderGIS si vous l'avez
+            installée. Elle n'est pas encore totalement compatible avec
+            BlenderBIM et empêche les suppressions ou duplications d'objets de
+            s'enregistrer dans l'IFC :
+            <a
+              href="https://community.osarch.org/discussion/946/ifc-deleting-elements#latest"
+              target="_blank"
+            >
+              osarch
+            </a>
+          </p>
+        </div>
         <br />
         <p>
           &#9888;&#65039; Les interfaces 3D sur ce site sont basées sur IFC.js,
@@ -105,9 +120,11 @@
             IFC dans une visionneuse BIM. Il en existe des gratuites comme
             <a href="https://bimvision.eu/download/" target="_blank"
               >BIMvision</a
-            >, et sur ce site la page <a href="./viewer/viewer.html" target="_blank"
-            >Ouvrir la visionneuse BIM</a> vous permets de visualiser votre
-            IFC directement sur navigateur.
+            >, et sur ce site la page
+            <a href="./viewer/viewer.html" target="_blank"
+              >Ouvrir la visionneuse BIM</a
+            >
+            vous permets de visualiser votre IFC directement sur navigateur.
           </p>
           <h4>IFC4</h4>
           <p>
@@ -1422,9 +1439,8 @@
           </div>
         </div>
       </div>
-<!--
       <div class="h3-chapter-container">
-        <h3>IfcRelAggregates</h3>
+        <h3>IFC Aggregate = Assemblage</h3>
         <div class="h3-chapter-content">
           <p class="download-ifc-container">
             <a class="download-ifc" href="./ifc/5-beam/model.ifc" download>
@@ -1473,16 +1489,16 @@
               </tr>
               <tr>
                 <td>RAFTER</td>
-                <td>Arbalétrier 80x80mm</td>
+                <td>Arbalétrier 80x120mm</td>
                 <td>Chêne foncé</td>
-                <td>80x80mm</td>
+                <td>80x120mm</td>
                 <td>IfcRectangleProfileDef</td>
               </tr>
               <tr>
                 <td>POST</td>
-                <td>Poinçon 80x80mm</td>
+                <td>Poinçon 80x120mm</td>
                 <td>Chêne foncé</td>
-                <td>80x80mm</td>
+                <td>80x120mm</td>
                 <td>IfcRectangleProfileDef</td>
               </tr>
             </tbody>
@@ -1493,27 +1509,130 @@
           </p>
           <img src="./images/captures/5/assembly-1.jpg" class="img" />
           <p>
-            -Déclarer cet Empty comme IfcElementAssembly avec le type prédéfini TRUSS :
+            -Déclarer cet Empty comme IfcElementAssembly avec le type prédéfini
+            TRUSS :
           </p>
           <img src="./images/captures/5/assembly-2.jpg" class="img" />
+          <p>-Renommer la ferme :</p>
+          <img src="./images/captures/5/assembly-5.jpg" class="img-xs" />
           <p>
-            -Amener le Cursor sur l'élément et ajouter avec le BIM Tool un entrait 80x210mm, de 5.6m de longueur :
+            -Amener le Cursor sur l'élément et ajouter avec le BIM Tool un
+            entrait 80x210mm, de 5.6m de longueur :
           </p>
-          <img src="./images/captures/5/assembly-3.jpg" class="img" />
-          <p>-Tourner la poutre de -90° en plan, et déplacer la de -0.21m en Z. Résultat :</p>
-          <img src="./images/captures/5/assembly-4.jpg" class="img" />
-          <p>Faire une ferme et ensuite un array.</p>
-          <p>Faire une ferme et ensuite un array.</p>
+          <img src="./images/captures/5/assembly-3.jpg" class="img-big" />
           <p>
-            -Autre assemblage simple, trois poutres composant la panne faîtière
+            -Tourner la poutre de 90° en plan, et la déplacer pour faire
+            correspondre sa base à l'IfcElementAssembly :
+          </p>
+          <img src="./images/captures/5/assembly-4.jpg" class="img-small" />
+          <h4>Assembler un IFC Aggregate</h4>
+          <p>
+            Dans les propriétés du IfcMember, sous IFC Aggregates, entrer en
+            édition :
+          </p>
+          <img src="./images/captures/5/assembly-6.jpg" class="img-small" />
+          <p class="nb">
+            &#128221; Cliquer le "+" à côté du crayon revient à créer un
+            IfcElement/Assembly (représenté dans Blender par un Empty) à
+            l'origine du projet.
+          </p>
+          <p>
+            Cliquer la pipette puis sélectionner la Ferme dans la vue 3D ou dans
+            l'Outliner :
+          </p>
+          <img src="./images/captures/5/assembly-8.jpg" class="img-small" />
+          <p>
+            Valider avec le vu. Résultat, BlenderBIM agrège le IfcMember à
+            l'IfcElementAssembly/Ferme. Dans Blender, cela se traduit par la
+            création automatique d'une collection au nom de l'assemblage :
+          </p>
+          <img src="./images/captures/5/assembly-7.jpg" class="img-small" />
+          <p>
+            Pour les IfcMembers suivants, les créer avec le BIM Tool en se
+            plaçant dans la collection de l'assemblage les agrégera
+            automatiquement :
+          </p>
+          <img src="./images/captures/5/assembly-9.jpg" class="img-small" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/assembly-10.jpg" class="img-small" />
+          <p>
+            Créer la ferme comme suit (donner les inclinaisons simplement avec
+            la commande R de Blender) :
+          </p>
+          <p class="nb">
+            &#128221; Nous ferons abstraction ici des joints entre chaque
+            élément de la ferme.
+          </p>
+          <img src="./images/captures/5/assembly-11.jpg" class="img-big" />
+          <h4>Donner un type à un IFC Aggregate</h4>
+          <p>
+            Dans les chapitres précédents, nous avons créé d'abord des types
+            puis des occurrences de ces types grâce au BIM Tool. Voyons ici avec
+            un assemblage comment d'abord créé un élément, puis le déclarer
+            comme occurrence d'un type. Comme nous avons plusieurs fois la même
+            ferme, il est en effet important de les rapporter à un type commun.
+          </p>
+          <p>
+            -Créer un Empty et le déclarer comme IfcElementAssemblyType (TRUSS)
             :
           </p>
+          <img src="./images/captures/5/assembly-12.jpg" class="img-big" />
+          <p>-Renommer : Ferme A</p>
+          <p>
+            -Sélectionner l'IfcElementAssembly que nous avons créé au chapitre
+            précédent (dans l'Outliner, ou l'élément Empty dans la scène 3D).
+            Celui n'a donc pas encore de type comme il a été créé sans le BIM
+            Tool. Entrer en mode édition :
+          </p>
+          <img src="./images/captures/5/assembly-13.jpg" class="img-small" />
+          <p>-Attribuer le type : Ferme A</p>
+          <img src="./images/captures/5/assembly-14.jpg" class="img" />
+          <h4>Dupliquer un IFC Aggregate</h4>
+          <p class="nb">
+            &#128221; Les IFC Array ne sont pas (encore?) disponible pour des
+            IFC Aggregate : un élément Blender Empty n'a en effet tout
+            simplement pas de menu Modifiers.<br />
+            &#128221; Autre problème, il est possible avec Blender de dupliquer
+            une collection entière depuis l'Outliner, mais ceci ne sera pas
+            enregistré dans l'IFC.
+          </p>
+          <p>
+            -Sélectionner toute la collection de la ferme, depuis un clic droit
+            sur la collection :
+          </p>
+          <img src="./images/captures/5/assembly-15.jpg" class="img-small" />
+          <p>-Dupliquer dans la zone graphique de 2.51m en X (Maj+D) :</p>
+          <img src="./images/captures/5/assembly-16.jpg" class="img" />
+          <p>
+            -Malheureusement, cela a pour effet de conserver les IfcMembers dans
+            la collection du premier assemblage :
+          </p>
+          <img src="./images/captures/5/assembly-17.jpg" class="img-small" />
+          <p>
+            Autrement dit, la relation d’agrégation n'est pas dupliquée. Nous
+            devons, à la main, désassembler chacun des ces IfcMembers du premier
+            assemblage pour les assembler au second.
+          </p>
+          <p>
+            -Pour désassembler, sélectionner l'IfcMember et cliquer simplement
+            la croix sous IFC Aggregates :
+          </p>
+          <img src="./images/captures/5/assembly-18.jpg" class="img" />
+          <p>Résultat, l'IfcMember sort de cette collection.</p>
+          <p>
+            -Garder l'élément sélectionné et dans le même champs, entrer en édition avec la crayon, puis
+            cliquer la pipette et sélectionner le second IfcElementAssembly.
+          </p>
+          <img src="./images/captures/5/assembly-19.jpg" class="img" />
+          <p>-Valider, résultat :</p>
+          <img src="./images/captures/5/assembly-20.jpg" class="img-small" />
+          <p>Répéter avec le reste des IfcMembers, puis poursuivre avec les deux fermes suivantes :</p>
+          <img src="./images/captures/5/assembly-21.jpg" class="img" />
         </div>
       </div>
-      -->
       <!--
       <div class="h3-chapter-container">
-        <h3>IfcRoof</h3>
+        <h3>IfcRoof & IFC Tesselation</h3>
         <div class="h3-chapter-content"></div>
       </div>
     --></section>

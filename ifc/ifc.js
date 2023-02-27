@@ -316,8 +316,10 @@ if (
 
   loadIfc("./model.ifc");
 
+  /*
   window.ondblclick = async () => await viewer.IFC.selector.pickIfcItem();
   window.onmousemove = async () => await viewer.IFC.selector.prePickIfcItem();
+  */
 
   // ADD GLB DIMENSIONS
   if (

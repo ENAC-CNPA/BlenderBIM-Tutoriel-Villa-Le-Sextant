@@ -1467,6 +1467,21 @@
             à IfcBeam et IfcColumn).
           </p>
           <p>Créer les IFC Profiles puis les IfcMemberTypes suivants :</p>
+          <p>Rappel :</p>
+          <p>
+            1. Pour créer un IFC Profile : sous Scene Properties > IFC Geometry
+            > IFC Profiles > Entrer en édition et ajouter un
+            IfcRectangleProfileDef, entrer en édition puis donner le nom les
+            bons paramètres, valider.
+          </p>
+          <p>
+            2. Pour créer un IfcMemberType : créer un Empty, sous Object
+            Properties > IFC Object Metadata > IFC Class > Donner la classe avec
+            les bons paramètres. Puis sous Object Properties > IFC Object
+            Metadata > IFC Object Material > Ajouter un IfcMaterialProfileSet,
+            entrer en édition puis ajouter les profils et matériaux
+            correspondant, valider.
+          </p>
           <table>
             <thead>
               <th>Predefined Type :</th>
@@ -1634,11 +1649,127 @@
             fermes suivantes :
           </p>
           <img src="./images/captures/5/assembly-21.jpg" class="img" />
+          <h4>Ferme B</h4>
+          <p>
+            Répéter ces opérations pour dupliquer une dernière ferme. Elle sera
+            légèrement différente des premières, donc nous créerons un nouveau
+            type :
+          </p>
+          <img src="./images/captures/5/assembly-22.jpg" class="img" />
+          <p>
+            -Créer un nouveau type "Ferme B" et l'appliquer à cette dernière
+            ferme :
+          </p>
+          <img src="./images/captures/5/assembly-23.jpg" class="img" />
+          <p>
+            -Ramener l'entrait à hauteur du poteau avec la commande Extend du
+            BIM Tool :
+          </p>
+          <img src="./images/captures/5/assembly-24.jpg" class="img" />
+          <p>-Supprimer le poinçon suivant :</p>
+          <img src="./images/captures/5/assembly-25.jpg" class="img-small" />
+          <h4>Faîtage</h4>
+          <p>
+            Nous allons créer un nouvel assemblage pour le faîtage, à
+            l'intersection des deux pans de toiture.
+          </p>
+          <p>Créer les IFC Profiles puis les IfcMemberTypes suivants :</p>
+          <table>
+            <thead>
+              <th>Predefined Type :</th>
+              <th>Name :</th>
+              <th>IFC Material :</th>
+              <th colspan="2">IFC Profile</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>MEMBER</td>
+                <td>Solive 680x20mm</td>
+                <td>Pin</td>
+                <td>680x20mm</td>
+                <td>IfcRectangleProfileDef</td>
+              </tr>
+              <tr>
+                <td>MEMBER</td>
+                <td>Solive 50x220mm</td>
+                <td>Chêne foncé</td>
+                <td>50x220mm</td>
+                <td>IfcRectangleProfileDef</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Dans l'étage de la toiture, ajouter un élément Empty à 0.38m de
+            l'encoche dans le mur près de l'origine, puis le déclarer comme
+            IfcElementAssembly, renommer "Faîtage" :
+          </p>
+          <img src="./images/captures/5/assembly-26.jpg" class="img" />
+          <p>
+            -Créer les IfcMembers comme suit, de 19.88m de long, et les
+            assembler au IfcElementAssembly dans un IFC Aggregate, avec le même
+            procédé que pour les fermes :
+          </p>
+          <img src="./images/captures/5/assembly-27.jpg" class="img" />
+          <h4>Pannes</h4>
+          <p>
+            Créer les IFC Profiles puis les IfcMemberTypes suivants (le profil
+            80x120mm existe déjà) :
+          </p>
+          <table>
+            <thead>
+              <th>Predefined Type :</th>
+              <th>Name :</th>
+              <th>IFC Material :</th>
+              <th colspan="2">IFC Profile</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>PURLIN</td>
+                <td>Panne 80x145mm</td>
+                <td>Chêne foncé</td>
+                <td>80x145mm</td>
+                <td>IfcRectangleProfileDef</td>
+              </tr>
+              <tr>
+                <td>PURLIN</td>
+                <td>Panne 80x120mm</td>
+                <td>Chêne foncé</td>
+                <td>80x120mm</td>
+                <td>IfcRectangleProfileDef</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            -Créer les pannes comme suit, de 18.73m de long, et encastrée aux
+            moitiés des murs :
+          </p>
+          <img src="./images/captures/5/assembly-28.jpg" class="img-big" />
+          <p class="nb">
+            &#128221; Astuce : régler l'orientation des transformations sur
+            local pour dupliquer les pannes le long de l'axe Y propre à la
+            sélection :
+          </p>
+          <img src="./images/captures/5/assembly-29.jpg" class="img-small" />
+          <img src="./images/captures/5/assembly-30.jpg" class="img" />
+          <p>Résultat du chapitre :</p>
+          <img src="./images/captures/5/assembly-31.jpg" class="img-big" />
+          <p>Résultat en 3D :</p>
+          <div class="iframe-container">
+            <iframe src="./ifc/aggregate/index.html" frameborder="0"> </iframe>
+          </div>
         </div>
       </div>
       <!--
       <div class="h3-chapter-container">
         <h3>IfcRoof & IFC Tesselation</h3>
+        <div class="h3-chapter-content"></div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>IfcWindow & Family notion in IFC</h3>
+        <div class="h3-chapter-content"></div>
+      </div>
+      <div class="h3-chapter-container">
+        <h3>Furniture / Annotations</h3>
         <div class="h3-chapter-content"></div>
       </div>
     --></section>

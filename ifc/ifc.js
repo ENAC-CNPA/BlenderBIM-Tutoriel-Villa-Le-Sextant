@@ -38,10 +38,10 @@ import {
   CSS2DObject,
 } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
-import { IFCLoader } from "web-ifc-three/IFCLoader";
+//import { IFCLoader } from "web-ifc-three/IFCLoader";
 
 import { IfcViewerAPI } from "web-ifc-viewer";
-import { IfcGrid } from "web-ifc-viewer/dist/components";
+//import { IfcGrid } from "web-ifc-viewer/dist/components";
 
 const subsetOfTHREE = {
   MOUSE,
@@ -250,7 +250,8 @@ if (
   currentPage === "5-wall-01-w5/index.html" ||
   currentPage === "5-slab/index.html" ||
   currentPage === "5-column/index.html" ||
-  currentPage === "5-beam/index.html"
+  currentPage === "5-beam/index.html" ||
+  currentPage === "5-aggregate/index.html"
 ) {
   const container = document.getElementById("viewer-container");
   const viewer = new IfcViewerAPI({

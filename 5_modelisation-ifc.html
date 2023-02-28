@@ -1440,7 +1440,7 @@
         </div>
       </div>
       <div class="h3-chapter-container">
-        <h3>IFC Aggregate = Assemblage</h3>
+        <h3>IfcRoof & IFC Aggregate (= Assemblage)</h3>
         <div class="h3-chapter-content">
           <p class="download-ifc-container">
             <a class="download-ifc" href="./ifc/5-beam/model.ifc" download>
@@ -1449,17 +1449,18 @@
             >
           </p>
           <p>
-            Nous allons maintenant modéliser les fermes de la charpente
-            supportant la toiture. Ces fermes sont composées de sous-éléments. A
-            l'usage de la maquette numérique, vous voudrons parfois nous référer
-            à la ferme dans son ensemble, d'autre fois à une de ses parties.
-            Nous allons donc découvrir la notion d'assemblage, que l'IFC
+            Nous allons maintenant modéliser le toit, composé de fermes de
+            charpente, composées elles-mêmes de sous-éléments. A l'usage de la
+            maquette numérique, vous voudrons parfois nous référer à la toiture
+            dans son ensemble, d'autre fois à une de ses parties. Nous allons
+            donc découvrir la notion d'assemblage et sous-assemblages, que l'IFC
             organise grâce à une relation dite IfcRelAggregates.
           </p>
           <p>
             Cette relation IfcRelAggregates permet de définir un élément par la
             somme de ses parties : par exemple une charpente, ou un escalier.
           </p>
+          <h4>Charpente</h4>
           <p>
             Les fermes seront définies comme IfcElementAssembly, et leurs
             parties comme IfcMember, car leur orientation (horizontal, vertical
@@ -1542,7 +1543,7 @@
             correspondre sa base à l'IfcElementAssembly :
           </p>
           <img src="./images/captures/5/assembly-4.jpg" class="img-small" />
-          <h4>Assembler un IFC Aggregate</h4>
+          <h5>Assembler un IFC Aggregate</h5>
           <p>
             Dans les propriétés du IfcMember, sous IFC Aggregates, entrer en
             édition :
@@ -1581,7 +1582,7 @@
             élément de la ferme.
           </p>
           <img src="./images/captures/5/assembly-11.jpg" class="img-big" />
-          <h4>Donner un type à un IFC Aggregate</h4>
+          <h5>Donner un type à un IFC Aggregate</h5>
           <p>
             Dans les chapitres précédents, nous avons créé d'abord des types
             puis des occurrences de ces types grâce au BIM Tool. Voyons ici avec
@@ -1604,7 +1605,7 @@
           <img src="./images/captures/5/assembly-13.jpg" class="img-small" />
           <p>-Attribuer le type : Ferme A</p>
           <img src="./images/captures/5/assembly-14.jpg" class="img" />
-          <h4>Dupliquer un IFC Aggregate</h4>
+          <h5>Dupliquer un IFC Aggregate</h5>
           <p class="nb">
             &#128221; Les IFC Array ne sont pas (encore?) disponible pour des
             IFC Aggregate : un élément Blender Empty n'a en effet tout
@@ -1649,7 +1650,7 @@
             fermes suivantes :
           </p>
           <img src="./images/captures/5/assembly-21.jpg" class="img" />
-          <h4>Ferme B</h4>
+          <h5>Ferme B</h5>
           <p>
             Répéter ces opérations pour dupliquer une dernière ferme. Elle sera
             légèrement différente des premières, donc nous créerons un nouveau
@@ -1668,7 +1669,7 @@
           <img src="./images/captures/5/assembly-24.jpg" class="img" />
           <p>-Supprimer le poinçon suivant :</p>
           <img src="./images/captures/5/assembly-25.jpg" class="img-small" />
-          <h4>Faîtage</h4>
+          <h5>Faîtage</h5>
           <p>
             Nous allons créer un nouvel assemblage pour le faîtage, à
             l'intersection des deux pans de toiture.
@@ -1710,7 +1711,7 @@
             procédé que pour les fermes :
           </p>
           <img src="./images/captures/5/assembly-27.jpg" class="img" />
-          <h4>Pannes</h4>
+          <h5>Pannes</h5>
           <p>
             Créer les IFC Profiles puis les IfcMemberTypes suivants (le profil
             80x120mm existe déjà) :
@@ -1751,23 +1752,122 @@
           </p>
           <img src="./images/captures/5/assembly-29.jpg" class="img-small" />
           <img src="./images/captures/5/assembly-30.jpg" class="img" />
-          <p>Résultat du chapitre :</p>
+          <p>Résultat :</p>
           <img src="./images/captures/5/assembly-31.jpg" class="img-big" />
-          <p>Résultat en 3D :</p>
+          <h4>Pans de toiture</h4>
+          <p>
+            Les pans de toiture sont à modéliser comme IfcSlabs avec le
+            sous-type : ROOF
+          </p>
+          <p>-Créer les nouveaux IFC Material et IfcSlabType suivant:</p>
+          <table>
+            <thead>
+              <th>Predefined Type :</th>
+              <th>Name :</th>
+              <th>IFC Material :</th>
+              <th>IFC Material > Color:</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ROOF</td>
+                <td>Plaque ondulée 60mm</td>
+                <td>Fibres-ciment</td>
+                <td style="color: #787878">#787878</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Ajouter deux pans de toiture avec les angles suivants (à entrer dans
+            le BIM Tool) : 14.40° et -8.59°
+          </p>
+          <p>Editer ensuite les profils de ces dalles comme ci-après.</p>
+          <img src="./images/captures/5/roof-1.jpg" class="img-big" />
+          <p>
+            Rappel : ne pas éditer les mesh directement avec l'Edit Mode de
+            Blender, mais en passant par les boutons d'édition et de sauvegarde
+            du BIM Tool dans le N-Panel. Sans quoi les modifications seront
+            visibles à l'écran mais pas enregistrées dans l'IFC.
+          </p>
+          <img src="./images/captures/5/roof-2.jpg" class="img-xs" />
+          <img src="./images/captures/5/roof-3.jpg" class="img-xs" />
+          <p>
+            Deuxième rappel : on peut changer le repère de transformations sur
+            Local pour que les contraintes d'axes fonctionnent en rapport avec
+            la sélection :
+          </p>
+          <img src="./images/captures/5/roof-4.jpg" class="img-small" />
+          <img src="./images/captures/5/roof-5.jpg" class="img-big" />
+          <img src="./images/captures/5/roof-6.jpg" class="img" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/roof-7.jpg" class="img" />
+          <h4>IfcRoof = assemblage d'assemblages</h4>
+          <p>
+            Un assemblage peut lui-même être contenu dan un autre assemblage.
+          </p>
+          <p>-Ajouter un Empty dans l'étage de la toiture :</p>
+          <img src="./images/captures/5/roof-8.jpg" class="img" />
+          <p>-Le déclarer en IfcRoof (BUTTERFLY_ROOF) et renommer Roof</p>
+          <img src="./images/captures/5/roof-9.jpg" class="img" />
+          <p>
+            -Agréger tous les éléments de la toiture à cet IfcRoof. Pour les
+            fermes, le faire à partir de l'élément Empty. Exemple :
+          </p>
+          <img src="./images/captures/5/roof-10.jpg" class="img-small" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/roof-11.jpg" class="img-small" />
+          <p>Résultat final du chapitre en 3D :</p>
           <div class="iframe-container">
-            <iframe src="./ifc/5-aggregate/index.html" frameborder="0"> </iframe>
+            <iframe src="./ifc/5-aggregate/index.html" frameborder="0">
+            </iframe>
           </div>
         </div>
       </div>
       <!--
       <div class="h3-chapter-container">
-        <h3>IfcRoof & IFC Tesselation</h3>
+        <h3>IfcWindow & Family notion in IFC & IFC Tessellations</h3>
         <div class="h3-chapter-content"></div>
+        <p class="download-ifc-container">
+          <a class="download-ifc" href="./ifc/5-aggregate/model.ifc" download>
+            <img src="./images/download.svg" class="download-ifc-image" />
+            Télécharger l'IFC au stade des chapitres précédents</a
+          >
+        </p>
+        <h5>Familles d'objets = Types en IFC</h5>
+        <p>
+          Les IfcWindow nous permettent d'introduire maintenant le concept de
+          familles. Souvent dans un ouvrage, une même porte ou fenêtre est
+          construite en plusieurs endroits. Dans une modélisation BIM, il
+          s’agira alors de parenter les différentes occurences effectives d’un
+          type de fenêtre à un même modèle original ; ainsi un changement sur ce
+          modèle affectera l’ensemble des occurrences de cette famille
+          introduites dans le projet. C'est bien le même principe que pour les
+          IfcColumnTypes, IfcBeamTypes, etc vus précédemment, sauf que ceux-ci
+          se déterminaient par des paramètres. Ici nous voudrons nous référer à
+          une géométrie d'origine enregistrée comme mesh, soit une Tessellation
+          en langage IFC. Sur Revit ou TopSolid par exemple, une famille est
+          enregistrée dans un fichier séparé. En IFC natif, nous les garderont à
+          l'origine du projet, masquées dan le dossier des Types. Comme nous
+          l'avons fait pour les profils.
+        </p>
+        <h5>IfcWindow / IfcOpeningElement</h5>
+        <p>
+          La modélisation des fenêtres est un très bon exercice pour
+          appréhender l’imbrication du plug-in BlenderBIM dans le logiciel
+          Blender. Il s’agit de satisfaire aux standards de structuration de la
+          donnée du schéma Ifc, objectif de BlenderBIM, en s’appuyant sur des
+          outils de modélisation propres à Blender. L’enjeu principal étant que
+          le schéma Ifc dissocie la fenêtre (IfcWindow) du vide
+          qu’elle crée dans un mur (IfcOpeningElement).
+        </p>
+        <p class="download-ifc-container">
+          <a class="download-ifc" href="./ifc/5-window/window.blend" download>
+            <img src="./images/download.svg" class="download-ifc-image" />
+            Télécharger le fichier Blender de la fenêtre modélisée au chapitre 2</a
+          >
+        </p>
       </div>
-      <div class="h3-chapter-container">
-        <h3>IfcWindow & Family notion in IFC</h3>
-        <div class="h3-chapter-content"></div>
-      </div>
+      -->
+      <!--
       <div class="h3-chapter-container">
         <h3>Furniture / Annotations</h3>
         <div class="h3-chapter-content"></div>

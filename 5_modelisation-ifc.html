@@ -1823,156 +1823,242 @@
         </div>
       </div>
       <div class="h3-chapter-container">
-        <h3>
-          IfcWindow & IfcOpeningElement (Family notion in IFC, IFC
-          Tessellations)
-        </h3>
-        <div class="h3-chapter-content"></div>
-        <p class="download-ifc-container">
-          <a class="download-ifc" href="./ifc/5-aggregate/model.ifc" download>
-            <img src="./images/download.svg" class="download-ifc-image" />
-            Télécharger l'IFC au stade des chapitres précédents</a
-          >
-        </p>
-        <h4>Explication théoriques</h4>
-        <h5>Familles d'objets = Types en IFC</h5>
-        <p>
-          Les IfcWindow nous permettent d'introduire maintenant le concept de
-          familles. Souvent dans un ouvrage, une même porte ou fenêtre est
-          construite en plusieurs endroits. Dans une modélisation BIM, il
-          s’agira alors de parenter les différentes occurences effectives d’un
-          type de fenêtre à un même modèle original ; ainsi un changement sur ce
-          modèle affectera l’ensemble des occurrences de cette famille
-          introduites dans le projet. C'est bien le même principe que pour les
-          IfcColumnTypes, IfcBeamTypes, etc vus précédemment, sauf que ceux-ci
-          se déterminaient par des paramètres. Ici nous voudrons nous référer à
-          une géométrie d'origine enregistrée comme mesh, soit une Tessellation
-          en langage IFC. Sur Revit ou TopSolid par exemple, une famille est
-          enregistrée dans un fichier séparé. En IFC natif, nous les garderont à
-          l'origine du projet, masquées dans le dossier des Types. Comme nous
-          l'avons fait pour les profils.
-        </p>
-        <h5>IfcWindow / IfcOpeningElement</h5>
-        <p>
-          La modélisation des fenêtres est un très bon exercice pour appréhender
-          l’imbrication du plug-in BlenderBIM dans le logiciel Blender. Il
-          s’agit de satisfaire aux standards de structuration de la donnée du
-          schéma Ifc, objectif de BlenderBIM, en s’appuyant sur des outils de
-          modélisation propres à Blender. L’enjeu principal étant que le schéma
-          IFC dissocie la fenêtre (IfcWindow) du vide qu’elle crée dans un mur
-          (IfcOpeningElement).
-        </p>
-        <h4>IfcWindowType</h4>
-        <p>
-          Ouvrir le fichier Blender de la fenêtre créée au
-          <a href="./2_modelisation-blender.html">chapitre 2</a>
-        </p>
-        <p class="download-ifc-container">
-          <a class="download-ifc" href="./ifc/5-window/window.blend" download>
-            <img src="./images/download.svg" class="download-ifc-image" />
-            Télécharger le fichier Blender de la fenêtre modélisée au chapitre
-            2</a
-          >
-        </p>
-        <p>Importer l'IFC de la Villa depuis les Scene Properties.</p>
-        <p>Déclarer la fenêtre en IfcWindowType :</p>
-        <img src="./images/captures/5/window-1.jpg" class="img" />
-        <p>
-          Résultat : la fenêtre disparaît de la scène car elle rejoint la
-          Collection des Types qui est automatiquement masquée par défaut :
-        </p>
-        <img src="./images/captures/5/window-2.jpg" class="img-small" />
-        <p>-Renommer : Simple 530x450mm</p>
-        <p class="nb">
-          &#128221; NB : Rangé ainsi dans Types, cet objet n’est pas direcetment
-          constitutif de la Villa. Toutefois, l’objet fait bien partie du
-          fichier Ifc ; on peut donc en conclure que ce format supporte
-          l’embarcation des familles d’objets de manière interne au fichier.
-        </p>
-        <h4>IfcWindow</h4>
-        <p>-Régler les accrochages sur Face :</p>
-        <img src="./images/captures/5/window-3.jpg" class="img-small" />
-        <p>
-          -Placer le curseur arbitrairement sur la face extérieur du mur suivant
-          :
-        </p>
-        <img src="./images/captures/5/window-4.jpg" class="img" />
-        <p>-Sélectionner dans l'Outliner la Collection de l'étage 00.</p>
-        <p>
-          -Activer le BIM Tool et sélectionner l'IfcWindow que nous venons de
-          créer :
-        </p>
-        <img src="./images/captures/5/window-5.jpg" class="img" />
-        <p class="nb">
-          &#128221; Le champs RL donne la hauteur de la fenêtre à l'insertion
-          par rapport à l'origine du mur. Elle n'est pas très importante puisque
-          nous pourront ensuite déplacer la fenêtre dans la scène.
-        </p>
-        <p>
-          Important: sélectionner le mur qui accueille la fenêtre, puis ajouter
-          la fenêtre (Maj + A).
-        </p>
-        <p>Résultat :</p>
-        <img src="./images/captures/5/window-6.jpg" class="img" />
-        <p class="nb">
-          &#128221; Il est fondamental de sélectionner le mur, sans quoi
-          BlenderBIM crééra l'IfcWindow mais pas l'IfcOpeningElement. Rappelons
-          qu’il s’agit pour Blender d'effectuer une soustraction boolènne, ce
-          qui nécessite de connaître les deux géométries concernées.
-        </p>
-        <p>
-          Pour afficher l'ouverture, sélectionner le mur, et dans l'onglet Tool
-          du N-Panel, cliquer l'oeil à droite du champ Add Void :
-        </p>
-        <img src="./images/captures/5/window-7.jpg" class="img" />
-        <p>Sortir de l'Edition avec le vu.</p>
-        <p>
-          Noter que le déplacement de la fenêtre n'entraîne pas une mise à jour
-          automatique de l'ouverture. Il faut cliquer pour ce faire le bouton
-          Regen.
-        </p>
-        <img src="./images/captures/5/window-8.jpg" class="img" />
-        <p>-Déplacer la fenêtre à l'emplacement suivant :</p>
-        <img src="./images/captures/5/window-9.jpg" class="img" />
-        <h4>Modifier la famille IfcWindowType</h4>
-        <p>
-          -Afficher l'IfcWindowType, le déplacer en Y de 0.3m et remettre
-          l'origine de l'objet à l'origine du projet :
-        </p>
-        <img src="./images/captures/5/window-10.jpg" class="img" />
-        <p>
-          Résultat : l'occurrence de la fenêtre s'est également déplacée par
-          rapport à son origine, sur la face du mur :
-        </p>
-        <img src="./images/captures/5/window-11.jpg" class="img" />
-        <p>
-          Attention, pour valider une telle modification dans l'IFC, mettre à
-          jour la représentation de l'IfcWindowType dans Object Data Properties
-          > IFC Representation :
-        </p>
-        <img src="./images/captures/5/window-12.jpg" class="img-small" />
-        <p class="nb">
-          &#128221; Cette relation entre la famille de fenêtre et son occurrence
-          prend la forme pour Blender d'une duplication liée : ce sont deux
-          objets qui ont le même mesh :
-        </p>
-        <img src="./images/captures/5/window-13.jpg" class="img-small" />
-        <img src="./images/captures/5/window-14.jpg" class="img-xs" />
-        <p>Créer les trois autre occurrences suivantes :</p>
-        <img src="./images/captures/5/window-15.jpg" class="img-big" />
-        <!--
-        <h4>Modifier l'IfcOpeningElement</h4>
-        <p>
-          Les ouvertures créées automatiquement par BlenderBIM sont également
-          des duplications liées, il nous suffira donc d'en modifier une seule.
-        </p>
-        <p>-Sélectionner le mur et afficher ses ouvertures :</p>
-        <img src="./images/captures/5/window-16.jpg" class="img-small" />
-        <p>-Sélectionner une ouverture et entrer en Mode Edition : </p>
-        <img src="./images/captures/5/window-17.jpg" class="img" />
-        <p>Delete- Limited dissolve. Alt Z. Cut edge. Voir sur google doc</p>
+        <h3>IfcWindow & IfcOpeningElement</h3>
+        <div class="h3-chapter-content">
+          <p class="download-ifc-container">
+            <a class="download-ifc" href="./ifc/5-aggregate/model.ifc" download>
+              <img src="./images/download.svg" class="download-ifc-image" />
+              Télécharger l'IFC au stade des chapitres précédents</a
+            >
+          </p>
+          <h4>Explication théoriques</h4>
+          <h5>Précisions sur les familles et types</h5>
+          <p>
+            Rappel : des logiciels comme TopSolid et Revit offrent un concept de
+            familles à pilotes variables paramétriques ou géométriques. Par
+            exemple, deux fenêtres semblables dont seule la hauteur varierait
+            peuvent être basées sur un même modèle paramétrique (la famille), et
+            on déterminera le paramètre hauteur pour chacune des occurrences
+            soit à leur inclusion dans l'assemblage ou le projet, soit en les
+            référant à des types intrinsèques à cette famille. Ce concept de
+            famille n'existe pas en IFC et dans cet exemple, chacune des
+            fenêtres dépendra d'un type indépendant l'un de l'autre.
+          </p>
+          <p>
+            On pourra éditer le type original pour répercuter les modifications
+            sur toutes ses occurrences. Ces modifications peuvent être un
+            paramètre comme pour les IfcColumnTypes, IfcBeamTypes, etc vus
+            précédemment. Ici nous voudrons nous référer à une géométrie
+            d'origine enregistrée comme mesh, soit une Tessellation en langage
+            IFC. En IFC natif, nous garderons cette géométrie à l'origine du
+            projet, masquée dans le dossier des Types. Comme nous l'avons fait
+            pour les types paramétriques représentés par des éléments Empty, ou
+            avec les profils.
+          </p>
+          <h5>IfcWindow / IfcOpeningElement</h5>
+          <p>
+            La modélisation des fenêtres est un très bon exercice pour
+            appréhender l’imbrication du plug-in BlenderBIM dans le logiciel
+            Blender. Il s’agit de satisfaire aux standards de structuration de
+            la donnée du schéma Ifc, objectif de BlenderBIM, en s’appuyant sur
+            des outils de modélisation propres à Blender. L’enjeu principal
+            étant que le schéma IFC dissocie la fenêtre (IfcWindow) du vide
+            qu’elle crée dans un mur (IfcOpeningElement).
+          </p>
+          <h4>IfcWindowType</h4>
+          <p>
+            Ouvrir le fichier Blender de la fenêtre créée au
+            <a href="./2_modelisation-blender.html">chapitre 2</a>
+          </p>
+          <p class="download-ifc-container">
+            <a class="download-ifc" href="./ifc/5-window/window.blend" download>
+              <img src="./images/download.svg" class="download-ifc-image" />
+              Télécharger le fichier Blender de la fenêtre modélisée au chapitre
+              2</a
+            >
+          </p>
+          <p>Importer l'IFC de la Villa depuis les Scene Properties.</p>
+          <p>Déclarer la fenêtre en IfcWindowType :</p>
+          <img src="./images/captures/5/window-1.jpg" class="img" />
+          <p>
+            Résultat : la fenêtre disparaît de la scène car elle rejoint la
+            Collection des Types qui est automatiquement masquée par défaut :
+          </p>
+          <img src="./images/captures/5/window-2.jpg" class="img-small" />
+          <p>-Renommer : Simple 530x450mm</p>
+          <p class="nb">
+            &#128221; NB : Rangé ainsi dans Types, cet objet n’est pas
+            direcetment constitutif de la Villa. Toutefois, l’objet fait bien
+            partie du fichier Ifc ; on peut donc en conclure que l'IFC natif
+            supporte l’embarcation des types d’objets de manière interne au
+            fichier.
+          </p>
+          <h4>IfcWindow</h4>
+          <p>-Régler les accrochages sur Face :</p>
+          <img src="./images/captures/5/window-3.jpg" class="img-small" />
+          <p>
+            -Placer le curseur arbitrairement sur la face extérieur du mur
+            suivant :
+          </p>
+          <img src="./images/captures/5/window-4.jpg" class="img" />
+          <p>-Sélectionner dans l'Outliner la Collection de l'étage 00.</p>
+          <p>
+            -Activer le BIM Tool et sélectionner l'IfcWindow que nous venons de
+            créer :
+          </p>
+          <img src="./images/captures/5/window-5.jpg" class="img" />
+          <p class="nb">
+            &#128221; Le champs RL donne la hauteur de la fenêtre à l'insertion
+            par rapport à l'origine du mur. Elle n'est pas très importante
+            puisque nous pourront ensuite déplacer la fenêtre dans la scène.
+          </p>
+          <p>
+            Important: sélectionner le mur qui accueille la fenêtre, puis
+            ajouter la fenêtre (Maj + A).
+          </p>
+          <p>Résultat :</p>
+          <img src="./images/captures/5/window-6.jpg" class="img" />
+          <p class="nb">
+            &#128221; Il est fondamental de sélectionner le mur, sans quoi
+            BlenderBIM crééra l'IfcWindow mais pas l'IfcOpeningElement.
+            Rappelons qu’il s’agit pour Blender d'effectuer une soustraction
+            boolènne, ce qui nécessite de connaître les deux géométries
+            concernées.
+          </p>
+          <p>
+            Pour afficher l'ouverture, sélectionner le mur, et dans l'onglet
+            Tool du N-Panel, cliquer l'oeil à droite du champ Add Void :
+          </p>
+          <img src="./images/captures/5/window-7.jpg" class="img" />
+          <p>Sortir de l'Edition avec le vu.</p>
+          <p>
+            Noter que le déplacement de la fenêtre n'entraîne pas une mise à
+            jour automatique de l'ouverture. Il faut pour ce faire sélectionner
+            le mur et cliquer le bouton Regen.
+          </p>
+          <img src="./images/captures/5/window-8.jpg" class="img" />
+          <p>-Déplacer la fenêtre à l'emplacement suivant :</p>
+          <img src="./images/captures/5/window-9.jpg" class="img" />
+          <h4>Modifier l'IfcWindowType</h4>
+          <p>
+            -Afficher l'IfcWindowType, le déplacer en Y de 0.3m et remettre
+            l'origine de l'objet à l'origine du projet :
+          </p>
+          <img src="./images/captures/5/window-10.jpg" class="img" />
+          <p>
+            Résultat : l'occurrence de la fenêtre s'est également déplacée par
+            rapport à son origine, sur la face du mur :
+          </p>
+          <img src="./images/captures/5/window-11.jpg" class="img" />
+          <p>
+            Attention, pour valider une telle modification dans l'IFC, mettre à
+            jour la représentation de l'IfcWindowType dans Object Data
+            Properties > IFC Representation :
+          </p>
+          <img src="./images/captures/5/window-12.jpg" class="img-small" />
+          <p class="nb">
+            &#128221; Cette relation entre le type de fenêtre et son occurrence
+            prend la forme pour Blender d'une duplication liée : ce sont deux
+            objets qui ont le même mesh :
+          </p>
+          <img src="./images/captures/5/window-13.jpg" class="img-small" />
+          <img src="./images/captures/5/window-14.jpg" class="img-xs" />
+          <p>Créer les trois autre occurrences suivantes :</p>
+          <img src="./images/captures/5/window-15.jpg" class="img-big" />
+          <h4>Modifier l'IfcOpeningElement</h4>
+          <p>
+            Les ouvertures créées automatiquement par BlenderBIM sont également
+            des duplications liées, il nous suffira donc d'en modifier une
+            seule.
+          </p>
+          <p>
+            -Activer le BIM Tool, sélectionner le mur et afficher ses ouvertures
+            dans le N-Panel sous Tool :
+          </p>
+          <img src="./images/captures/5/window-16.jpg" class="img-xs" />
+          <p>
+            -Sélectionner une des ouvertures et entrer en Mode Edition avec Tab
+            : ce message d'erreur s'affiche en bas de la fenêtre :
+          </p>
+          <img src="./images/captures/5/window-18.jpg" class="img" />
+          <p>
+            Il s'agit de déclarer la géométrie de cette ouverture comme étant
+            une tessellation pour pouvoir pouvoir la modifier tel un mesh dans
+            le mode Edition de Blender. Dans les propriétés de données de
+            l'objet, mettre à jour cette représentation :
+          </p>
+          <img src="./images/captures/5/window-19.jpg" class="img" />
+          <p>
+            Entrer en mode Edition et constater qu'une transformation s'applique
+            bien également sur les duplications liées :
+          </p>
+          <img src="./images/captures/5/window-20.jpg" class="img-big" />
+          <p>
+            Noter qu'en IFC une tesselation triangule toutes les faces d'un
+            objet, même celles coplanaires. Pour faciliter nos opérations,
+            commencer par rejoindre toutes les faces coplanaires. Entrer en
+            sélection de faces (RC 3), les sélectionner toutes (RC A) puis RC
+            Delete > Limited dissolve :
+          </p>
+          <img src="./images/captures/5/window-21.jpg" class="img" />
+          <p>
+            Passer en vue transparente (RC Alt Z) pour voir la fenêtre, ou en
+            filaire :
+          </p>
+          <img src="./images/captures/5/window-22.jpg" class="img-small" />
+          <p>Dans la barre d'outils, choisir Loop Cut :</p>
+          <img src="./images/captures/5/window-23.jpg" class="img-xxs" />
+          <p>
+            Cliquer à proximité d'une des arêtes en Y pour ajouter un tour
+            d'arêtes dans cette direction :
+          </p>
+          <img src="./images/captures/5/window-24.jpg" class="img-small" />
+          <p>Déplacer ces arêtes à fleur de la fenêtre :</p>
+          <img src="./images/captures/5/window-25.jpg" class="img-small" />
+          <p>Répéter sur le côté intérieur de la fenêtre :</p>
+          <img src="./images/captures/5/window-26.jpg" class="img-small" />
+          <p>Régler le point pivot des transformations sur le 3D Cursor :</p>
+          <img src="./images/captures/5/window-27.jpg" class="img-xs" />
+          <p>
+            Amener le 3D Cursor sur un coin extérieur de la fenêtre. Puis
+            pivoter l'arête suivante de -20° en contraignant la transformation
+            en Z :
+          </p>
+          <img src="./images/captures/5/window-28.jpg" class="img-small" />
+          <p>Répéter de l'autre côté.</p>
+          <p>
+            Déplacer les faces verticales du tableau intérieur de 4cm vers
+            l'intérieur de l'ouverture :
+          </p>
+          <img src="./images/captures/5/window-30.jpg" class="img-small" />
+          <p>
+            Avec l'outil Knife (RC K), ajouter une arête sur la face suivante :
+          </p>
+          <img src="./images/captures/5/window-31.jpg" class="img-small" />
+          <p>
+            Déplacer cette arête pour faire un angle à 90° entourant la fenêtre,
+            en s'accrochant sur les sommets existants :
+          </p>
+          <img src="./images/captures/5/window-32.jpg" class="img-small" />
+          <p>Répéter de l'autre côté.</p>
+          <p>
+            Sortir du mode édition. Un message de BlenderBIM vous demande de
+            valider ces modifications pour mettre à jour cette tessellation dans
+            l'IFC. Valider :
+          </p>
+          <img src="./images/captures/5/window-33.jpg" class="img-small" />
+          <p>
+            Les modifications se sont bien répercutées sur toutes les ouvertures
+            accueillant ce type de fenêtre :
+          </p>
+          <img src="./images/captures/5/window-34.jpg" class="img-small" />
+          <p>
+            Dernière opération importante : sélectionner le mur et valider ces
+            opérations sur ses ouvertures :
+          </p>
+          <img src="./images/captures/5/window-35.jpg" class="img" />
+        </div>
       </div>
-      -->
       <!--
       <div class="h3-chapter-container">
         <h3>Furniture / Annotations</h3>

@@ -1848,12 +1848,12 @@
             On pourra éditer le type original pour répercuter les modifications
             sur toutes ses occurrences. Ces modifications peuvent être un
             paramètre comme pour les IfcColumnTypes, IfcBeamTypes, etc vus
-            précédemment. Ici nous voudrons nous référer à une géométrie
-            d'origine enregistrée comme mesh, soit une Tessellation en langage
-            IFC. En IFC natif, nous garderons cette géométrie à l'origine du
-            projet, masquée dans le dossier des Types. Comme nous l'avons fait
-            pour les types paramétriques représentés par des éléments Empty, ou
-            avec les profils.
+            précédemment. Ici, dans le premier cas, nous voudrons nous référer à
+            une géométrie d'origine enregistrée comme mesh, soit une
+            Tessellation en langage IFC. En IFC natif, nous garderons cette
+            géométrie à l'origine du projet, masquée dans le dossier des Types.
+            Comme nous l'avons fait pour les types paramétriques représentés par
+            des éléments Empty, ou avec les profils.
           </p>
           <h5>IfcWindow / IfcOpeningElement</h5>
           <p>
@@ -1865,7 +1865,13 @@
             étant que le schéma IFC dissocie la fenêtre (IfcWindow) du vide
             qu’elle crée dans un mur (IfcOpeningElement).
           </p>
-          <h4>IfcWindowType</h4>
+          <h5>Mesh / Paramétrique</h5>
+          <p>
+            Nous verrons deux types de représentations géométriques pour les
+            fenêtres: mesh (dit tesselation en IFC) et paramétrique.
+          </p>
+          <h4>IfcWindow : Mesh</h4>
+          <h5>IfcWindowType</h5>
           <p>
             Ouvrir le fichier Blender de la fenêtre créée au
             <a href="./2_modelisation-blender.html">chapitre 2</a>
@@ -1888,12 +1894,18 @@
           <p>-Renommer : Simple 530x450mm</p>
           <p class="nb">
             &#128221; NB : Rangé ainsi dans Types, cet objet n’est pas
-            direcetment constitutif de la Villa. Toutefois, l’objet fait bien
+            directement constitutif de la Villa. Toutefois, l’objet fait bien
             partie du fichier Ifc ; on peut donc en conclure que l'IFC natif
             supporte l’embarcation des types d’objets de manière interne au
             fichier.
           </p>
-          <h4>IfcWindow</h4>
+          <p>
+            Comme nous avons déclaré ce type à partir d'un mesh, BlenderBIM
+            renseigne automatiquement sa représentation géométrique comme étant
+            une tessellation :
+          </p>
+          <img src="./images/captures/5/window-46.jpg" class="img" />
+          <h5>IfcWindow</h5>
           <p>-Régler les accrochages sur Face :</p>
           <img src="./images/captures/5/window-3.jpg" class="img-small" />
           <p>
@@ -1939,7 +1951,7 @@
           <img src="./images/captures/5/window-8.jpg" class="img" />
           <p>-Déplacer la fenêtre à l'emplacement suivant :</p>
           <img src="./images/captures/5/window-9.jpg" class="img" />
-          <h4>Modifier l'IfcWindowType</h4>
+          <h5>Modifier l'IfcWindowType</h5>
           <p>
             -Afficher l'IfcWindowType, le déplacer en Y de 0.3m et remettre
             l'origine de l'objet à l'origine du projet :
@@ -1965,7 +1977,7 @@
           <img src="./images/captures/5/window-14.jpg" class="img-xs" />
           <p>Créer les trois autre occurrences suivantes :</p>
           <img src="./images/captures/5/window-15.jpg" class="img-big" />
-          <h4>Modifier l'IfcOpeningElement</h4>
+          <h5>Modifier l'IfcOpeningElement</h5>
           <p>
             Les ouvertures créées automatiquement par BlenderBIM sont également
             des duplications liées, il nous suffira donc d'en modifier une
@@ -2057,6 +2069,78 @@
             opérations sur ses ouvertures :
           </p>
           <img src="./images/captures/5/window-35.jpg" class="img" />
+          <h5>Ajouter des matériaux à la fenêtre</h5>
+          <p>Ajouter à l'IFC les Matériaux suivants :</p>
+          <table>
+            <thead>
+              <th>Nom :</th>
+              <th>Base Color > Hex :</th>
+              <th>Base Color > Alpha :</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Vitrage</td>
+                <td>000000</td>
+                <td>0.1</td>
+              </tr>
+              <tr>
+                <td>Bois bleu</td>
+                <td>a8b8d5</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+          <img src="./images/captures/5/window-36.jpg" class="img" />
+          <p>Editer le type de la fenêtre. Ajouter Bois bleu.</p>
+          <img src="./images/captures/5/window-38.jpg" class="img" />
+          <p>
+            Ajouter un matériau, choisir Vitrage, puis sélectionner juste les
+            faces de vitrage (intérieur et extérieur) et leur assigner ce
+            matériau :
+          </p>
+          <img src="./images/captures/5/window-37.jpg" class="img" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/window-39.jpg" class="img-big" />
+          <h4>IfcWindow : paramétrique</h4>
+          <p>
+            BlenderBIM offre également la possibilité de créer des fenêtres à
+            partir de paramètres standards.
+          </p>
+          <p>Ajouter pour cela un plan à la scène (Add > Mesh > Plane) :</p>
+          <img src="./images/captures/5/window-40.jpg" class="img" />
+          <p class="nb">
+            &#128221; Nous ajoutons un plan plutôt qu'un Empty car ceux-ci, dans
+            Blender en général, n'ont pas d'onglet Modifiers dans leurs
+            propriétés. Or c'est là que BlenderBIM range la possibilité de le
+            convertir en fenêtre paramétrique.
+          </p>
+          <p>Déclarer cet objet en IfcWindowType :</p>
+          <img src="./images/captures/5/window-41.jpg" class="img-small" />
+          <p>Renommer le type : Double Partition 241.5x67mm</p>
+          <p>
+            Cela le fait disparaître dans la collection des types qui est
+            masquée. Afficher la collection puis isoler ce type dans la scène
+            (RC : §)
+          </p>
+          <p>Sous les Modifiers, ajouter un IFCWindow.</p>
+          <img src="./images/captures/5/window-42.jpg" class="img" />
+          <p>
+            Cela transforme votre plan en fenêtre. Editer en cliquant le crayon
+            et remplir les champs comme suit :
+          </p>
+          <img src="./images/captures/5/window-43.jpg" class="img-big" />
+          <h5>Ajouter une fenêtre sans lien avec un mur</h5>
+          <p>
+            Nous pouvons ajouter une fenêtre sans forcément l'inscrire dans un
+            mur ; cela aura pour effet de ne pas générer d'IfcOpeningElement.
+          </p>
+          <p>
+            Sélectionner la Collection de la Toiture, placer votre curseur comme
+            suit et ajouter une occurrence du type que nous venons de créer.
+          </p>
+          <img src="./images/captures/5/window-44.jpg" class="img" />
+          <p>Résultat :</p>
+          <img src="./images/captures/5/window-45.jpg" class="img" />
         </div>
       </div>
       <!--
